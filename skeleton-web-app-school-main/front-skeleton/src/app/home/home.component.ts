@@ -17,7 +17,7 @@ export class HomeComponent {
     { titre: 'Retour sur l’histoire du FCL', resume: 'Les moments clés depuis 1926...', image: 'assets/articles/histoire-fcl.jpg' },
     { titre: 'Les coulisses de l’entraînement', resume: 'Une journée avec les joueurs...', image: 'assets/articles/entrainement.jpg' },
     { titre: 'Le FCL et la communauté locale', resume: 'Engagements et initiatives...', image: 'assets/articles/communaute.jpg' },
-    { titre: 'Préparation physique : les secrets', resume: 'Comment les joueurs restent au top...', image: 'assets/articlesan/preparation-physique.jpg' },
+    { titre: 'Préparation physique : les secrets', resume: 'Comment les joueurs restent au top...', image: 'assets/articles/preparation-physique.jpg' },
     // ...ajoute-en autant que nécessaire
   ];
 
