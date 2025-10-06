@@ -1,0 +1,152 @@
+/* ===== Carousel ===== */
+.carousel {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-height: 500px; /* Ajusté pour éviter de couper les images */
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  min-width: 100%;
+  position: relative;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Les images ne seront plus coupées */
+  background-color: #000; /* Optionnel, pour éviter les espaces blancs */
+}
+
+.caption {
+  position: absolute;
+  bottom: 30px;
+  left: 50px;
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 15px;
+  border-radius: 10px;
+}
+
+/* Flèches */
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.4);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 50%;
+}
+.prev { left: 15px; }
+.next { right: 15px; }
+
+.prev:hover, .next:hover {
+  background: rgba(0,0,0,0.7);
+}
+
+/* ===== Matchs à venir ===== */
+.matchs {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.match-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.match {
+  background: #f5f5f5;
+  border-radius: 10px;
+  padding: 15px;
+  width: 250px;
+}
+
+/* ===== Articles ===== */
+.articles-section {
+  padding: 40px;
+  text-align: center;
+}
+
+.articles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 25px;
+}
+
+.article-card {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.article-card:hover {
+  transform: translateY(-5px);
+}
+
+.article-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.article-info {
+  padding: 15px;
+  text-align: left;
+}
+
+/* Pagination */
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.pagination button {
+  padding: 8px 16px;
+  border: none;
+  background: #ff6600;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.pagination button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* ===== Footer ===== */
+.socials {
+  text-align: center;
+  padding: 20px;
+  background-color: #000;
+}
+
+.socials a {
+  color: white;
+  margin: 0 15px;
+  font-size: 1.8rem;
+  transition: color 0.2s;
+}
+
+.socials a:hover {
+  color: #ff6600;
+}
