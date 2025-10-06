@@ -1,4 +1,4 @@
-<section class="carousel">
+<section class="carousel" >
   <div class="slides" [style.transform]="'translateX(-' + currentSlide * 100 + '%)'">
     <div class="slide" *ngFor="let article of articles">
       <img [src]="article.image" [alt]="article.titre" />
@@ -93,7 +93,6 @@
   </div>
 </section>
 
----
 
 <footer class="socials">
   <a href="https://twitter.com/FCLorient" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>

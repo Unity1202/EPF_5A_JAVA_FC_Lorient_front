@@ -57,18 +57,13 @@ export class HomeComponent {
     { pos: 18, club: 'FC Metz', pts: 2, j: 7, g: 0, n: 2, p: 5, diff: '-11', logo: 'https://upload.wikimedia.org/wikipedia/fr/a/a2/Logo_FC_Metz_2022.svg' },
   ];
 
-  // FONCTION POUR LE CLASSEMENT CIBLÉ
-  get getFocusedClassement() {
-    // 1. Trouver la position (index) du FC Lorient dans le tableau
-    const lorientIndex = this.classementLigue1.findIndex(club => club.club === 'FC Lorient');
 
-    // 2. Déterminer les indices de début et de fin pour le slice
-    // On veut 2 clubs au-dessus (index - 2)
+  get getFocusedClassement() {
+    const lorientIndex = this.classementLigue1.findIndex(club => club.club === 'FC Lorient');
     const startIndex = Math.max(0, lorientIndex - 2); 
-    // On veut 2 clubs en dessous (index + 2), plus Lorient lui-même (index + 1), donc jusqu'à index + 3 (exclusif)
+  
     const endIndex = Math.min(this.classementLigue1.length, lorientIndex + 3);
 
-    // 3. Extraire le segment du classement
     return this.classementLigue1.slice(startIndex, endIndex);
   }
 
