@@ -7,6 +7,11 @@ import { ForumComponent } from "./forum/forum.component"
 const routes: Routes = [
   { path: "", component: HomeComponent },
   { path: "forum", component: ForumComponent },
+  // Temporary mappings until dedicated components are created
+  { path: "boutique", component: HomeComponent },
+  { path: "equipe", component: HomeComponent },
+  { path: "infos", component: HomeComponent },
+  { path: "**", redirectTo: "", pathMatch: "full" },
   
 ]
 
