@@ -1,43 +1,43 @@
 body {
   scroll-snap-type: y mandatory; 
   overflow-y: scroll;
-  height: 100vh;
+  height: 100vh; /* Le conteneur doit avoir une hauteur définie */
   font-family: "Konsole", sans-serif;
-
-  background-image: 'assets/bg.jpg'; 
-  background-size: cover;        
-  background-position: center; 
-  background-repeat: no-repeat; 
+  
+  background-image: url('/assets/bg.jpg'); 
+  background-size: cover;
+  background-position: center;
   background-attachment: fixed;
 }
-
 
 
 /* ===== Carousel ===== */
 .carousel {
   position: relative;
   width: 100vw;
-  height: 100vh;
+  height: 85vh;
+
+  scroll-snap-align: start;
   scroll-snap-stop: always;
 }
 
 .slides {
   display: flex;
   transition: transform 0.5s ease-in-out;
-  height: 100%; /* Important pour que les slides prennent toute la hauteur */
+  height: 100%;
 }
 
 .slide {
   min-width: 100%;
   position: relative;
-  height: 100%; /* Important */
+  height: 100%;
 }
 
 .slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block; /* Évite les espaces blancs sous l'image */
+  display: block;
 }
 
 .caption {
@@ -45,11 +45,11 @@ body {
   bottom: 30px;
   left: 50px;
   color: white;
-  background: rgba(0, 0, 0, 0.7); /* Plus opaque pour mieux voir */
+  background: rgba(0, 0, 0, 0.7);
   padding: 20px;
   border-radius: 10px;
-  max-width: 500px; /* Évite que le texte soit trop large */
-  z-index: 10; /* S'assure que la caption est au-dessus */
+  max-width: 500px;
+  z-index: 10;
   font-family: "Konsole", sans-serif;
 }
 
@@ -94,7 +94,7 @@ body {
 /* Responsive */
 @media (max-width: 768px) {
   .carousel {
-    height: 300px;
+    height: 300px; /* Sur mobile, on réduit la hauteur du carousel */
   }
   
   .caption {
@@ -116,13 +116,18 @@ body {
 
 /* ===== Matchs à venir ===== */
 .matchs {
+
+  scroll-snap-align: start;
+  min-height: 100vh;
+  
   display: flex;
+  flex-direction: column; /* Ajouté pour centrer correctement le contenu verticalement */
   justify-content: center;
   align-items: center;
   font-family: "konsole", sans-serif;
   color: black;
   text-align: center;
-  margin-top: 40px;
+  padding: 40px 0; /* Ajout d'un padding pour l'esthétique si min-height 100vh est utilisé */
 }
 
 .matchs-container {
@@ -130,7 +135,9 @@ body {
 }
 
 .matchs-container h2 {
-  color: black;
+  color: white;
+  font-family: "konsole", sans-serif;
+  font-weight: bold;
   font-size: 2em;
   margin-bottom: 20px;
   letter-spacing: 1px;
@@ -202,10 +209,7 @@ body {
 }
 
 
-
-
-
-/* Flèches */
+/* Flèches (Ces styles étaient dupliqués, je les laisse pour ne pas rompre la logique) */
 .prev, .next {
   position: absolute;
   top: 50%;
@@ -228,16 +232,30 @@ body {
 
 /* ===== Articles ===== */
 .articles-section {
+  /* FIX: Assure le snap et donne une hauteur minimum */
+  scroll-snap-align: start;
+  min-height: 100vh;
+  
   padding: 40px;
   text-align: center;
-  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.articles-section h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: white;
+  letter-spacing: 1px;
+  font-family: "Konsole", sans-serif;
+  font-weight: bold;
 }
 
 .articles-grid {
   display: grid;
-  /* Crée 3 colonnes de taille égale, ou moins si l'écran est plus petit */
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-  gap: 20px; /* Espace entre les cartes */
+  gap: 20px;
   margin-top: 20px;
 }
 
@@ -247,12 +265,15 @@ body {
   overflow: hidden;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
   font-family: "Konsole", sans-serif;
+  font-weight: bold;
+  background-color: #fffaf5;
 }
 
 .article-card img {
   width: 100%;
   height: auto;
   object-fit: cover;
+  
 }
 
 .article-info {
@@ -267,6 +288,12 @@ body {
   justify-content: center;
   align-items: center;
   gap: 15px;
+}
+
+.pagination span {
+  font-weight: bold;
+  font-family: "Konsole", sans-serif;
+  color: white;
 }
 
 .pagination button {
@@ -286,6 +313,11 @@ body {
 
 /* ===== Footer ===== */
 .footer {
+  /* FIX: Assure le snap */
+  scroll-snap-align: start;
+  /* La hauteur minimale aide le snap final */
+  min-height: 50vh; 
+  
   background-color: rgba(0,0,0,0.85);
   color: #fff;
   font-family: "Konsole", sans-serif;
@@ -373,14 +405,22 @@ body {
 
 /* Style pour le tableau de classement */
 .classement-ligue1 {
+  /* FIX: Assure le snap et donne une hauteur minimum */
+  scroll-snap-align: start;
+  min-height: 100vh;
+  
   margin-top: 40px;
   text-align: center;
   color: black;
   font-family: "Konsole", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px 0;
 }
 
 .classement-ligue1 h2 {
-  color: black;
+  color: white;
   margin-bottom: 20px;
   font-size: 2em;
   letter-spacing: 1px;
@@ -438,5 +478,3 @@ body {
 .classement-table img:hover {
   transform: scale(1.1);
 }
-
-

@@ -1,9 +1,22 @@
+body{
+    background-image: url('../../../assets/bg.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 40px 20px;
+}
+
 .apropos {
-    font-family: 'Inter', sans-serif;
-    color: #222;
+    font-family: 'Konsole', sans-serif;
+    font-weight: bold;
+    color: white;
     padding: 40px;
     max-width: 1200px;
     margin: 0 auto;
+
+    
+
+
   
     .header {
       text-align: center;
@@ -18,7 +31,7 @@
   
       .intro {
         font-size: 1.1rem;
-        color: #555;
+        color: white;
         line-height: 1.6;
       }
     }
@@ -32,7 +45,7 @@
         flex: 2 1 500px;
         font-size: 1rem;
         line-height: 1.7;
-        color: #444;
+        color: grey;
   
         p {
           margin-bottom: 20px;
@@ -60,11 +73,12 @@
   
           li {
             margin-bottom: 10px;
+            color: #333;
             strong {
               color: #ff6600;
             }
             a {
-              color: #ff6600;
+              color: #333;
               text-decoration: none;
               &:hover {
                 text-decoration: underline;
@@ -81,6 +95,7 @@
           span {
             font-weight: 600;
             margin-right: 10px;
+            color: #333;
           }
   
           a img {
@@ -101,4 +116,4 @@
       }
     }
   }
-  
+ 

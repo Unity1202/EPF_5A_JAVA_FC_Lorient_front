@@ -1,0 +1,64 @@
+<!-- register.component.html -->
+<div class="register-container">
+    <div class="register-card">
+        <h2 class="title">Créer votre compte</h2>
+        <form (ngSubmit)="onSubmit()">
+            
+            <div class="form-group">
+                <label for="firstName">Prénom</label>
+                <input 
+                    type="text" 
+                    id="firstName" 
+                    name="firstName" 
+                    [(ngModel)]="firstName" 
+                    required 
+                    placeholder="Votre prénom"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="lastName">Nom</label>
+                <input 
+                    type="text" 
+                    id="lastName" 
+                    name="lastName" 
+                    [(ngModel)]="lastName" 
+                    required 
+                    placeholder="Votre nom"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    [(ngModel)]="email" 
+                    required 
+                    placeholder="example@lorient.fr"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="password">Mot de passe</label>
+                <input 
+                    type="password" 
+                    id="password" 
+                    name="password" 
+                    [(ngModel)]="password" 
+                    required 
+                    placeholder="Minimum 6 caractères"
+                >
+            </div>
+            
+            <button type="submit" [disabled]="!isFormValid()" class="submit-button">
+                S'inscrire
+            </button>
+        </form>
+        
+        <p class="login-link">
+            Déjà un compte ? <a routerLink="/login">Se connecter</a>
+        </p>
+    </div>
+</div>

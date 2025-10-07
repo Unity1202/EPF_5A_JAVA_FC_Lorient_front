@@ -15,8 +15,8 @@ export class AProposComponent {
   };
 
   reseaux = [
-    { nom: 'Facebook', url: 'https://www.facebook.com/FCLorient', icone: 'assets/icons/facebook.png' },
-    { nom: 'Twitter', url: 'https://twitter.com/FCLorient', icone: 'assets/icons/twitter.png' },
-    { nom: 'Instagram', url: 'https://www.instagram.com/fclorient/', icone: 'assets/icons/instagram.png' }
+    { nom: 'Facebook', url: 'https://www.facebook.com/FCLorient', icone: 'assets/rs/facebook.png' },
+    { nom: 'Twitter', url: 'https://twitter.com/FCLorient', icone: 'assets/rs/twitter.png' },
+    { nom: 'Instagram', url: 'https://www.instagram.com/fclorient/', icone: 'assets/rs/insta.png' }
   ];
 }

@@ -5,6 +5,8 @@ import { ForumComponent } from "./forum/forum.component"
 import { BoutiqueComponent } from "pages/boutique/boutique.component"
 import { ListeJoueursComponent } from "pages/liste-joueurs/liste-joueurs.component"
 import { AProposComponent } from "pages/a-propos/a-propos.component"
+import { LoginComponent } from "pages/login/login.component"
+import { RegisterComponent } from "pages/register/register.component"
 
 
 const routes: Routes = [
@@ -13,6 +15,8 @@ const routes: Routes = [
   { path: "boutique", component: BoutiqueComponent},
   { path: "equipe", component: ListeJoueursComponent },
   { path: "infos", component: AProposComponent },
+  { path: "login", component: LoginComponent},
+  { path: "register", component: RegisterComponent},
   { path: "**", redirectTo: "", pathMatch: "full" },
 
   
