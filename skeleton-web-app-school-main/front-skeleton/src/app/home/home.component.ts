@@ -36,7 +36,7 @@ export class HomeComponent {
 
   // DONNÉES DU CLASSEMENT
   // Note: 'pos' est la clé pour la position, utilisée pour le tri et le filtrage.
-  classementLigue1 = [
+  classement = [
     { pos: 1, club: 'Paris Saint-Germain', pts: 16, j: 7, g: 5, n: 1, p: 1, diff: '+8', logo: 'https://upload.wikimedia.org/wikipedia/fr/4/44/Logo_du_Paris_Saint-Germain.svg' },
     { pos: 2, club: 'Olympique de Marseille', pts: 15, j: 7, g: 5, n: 0, p: 2, diff: '+10', logo: 'https://upload.wikimedia.org/wikipedia/fr/7/75/Logo_Olympique_Marseille_2017.svg' },
     { pos: 3, club: 'RC Strasbourg Alsace', pts: 15, j: 7, g: 5, n: 0, p: 2, diff: '+7', logo: 'https://upload.wikimedia.org/wikipedia/fr/b/b3/Logo_RC_Strasbourg_2020.svg' },
@@ -59,12 +59,12 @@ export class HomeComponent {
 
 
   get getFocusedClassement() {
-    const lorientIndex = this.classementLigue1.findIndex(club => club.club === 'FC Lorient');
+    const lorientIndex = this.classement.findIndex(club => club.club === 'FC Lorient');
     const startIndex = Math.max(0, lorientIndex - 2); 
   
-    const endIndex = Math.min(this.classementLigue1.length, lorientIndex + 3);
+    const endIndex = Math.min(this.classement.length, lorientIndex + 3);
 
-    return this.classementLigue1.slice(startIndex, endIndex);
+    return this.classement.slice(startIndex, endIndex);
   }
 
   // Pagination

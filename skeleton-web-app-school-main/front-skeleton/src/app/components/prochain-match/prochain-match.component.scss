@@ -1,0 +1,88 @@
+/* ===== Matchs à venir ===== */
+.matchs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "konsole", sans-serif;
+    color: black;
+    text-align: center;
+    margin-top: 40px;
+  }
+  
+  .matchs-container {
+    width: 70%;
+  }
+  
+  .matchs-container h2 {
+    color: black;
+    font-size: 2em;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+  }
+  
+  /* Carte principale du match */
+  .match-card {
+    background-color: #fffaf5;
+    border: 2px solid #ff6600;
+    border-radius: 5px;
+    padding: 25px 30px;
+    width: 60%;
+    margin: 0 auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .match-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px rgba(255, 102, 0, 0.4);
+  }
+  
+  /* Date du match */
+  .match-card .date {
+    color: #ff6600;
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-size: 1.1em;
+  }
+  
+  /* Bloc des équipes */
+  .teams {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px 0;
+    gap: 60px;
+  }
+  
+  .team {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+  
+  .team img {
+    height: 50px;
+    transition: transform 0.2s ease;
+  }
+  
+  .team img:hover {
+    transform: scale(1.1);
+  }
+  
+  .vs {
+    font-size: 1.5em;
+    color: #ff6600;
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
+  
+  /* Lieu du match */
+  .match-card .lieu {
+    margin-top: 15px;
+    font-size: 1em;
+    color: #555;
+  }
+  
+  

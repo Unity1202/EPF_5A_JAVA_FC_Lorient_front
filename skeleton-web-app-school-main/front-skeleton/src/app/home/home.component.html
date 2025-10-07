@@ -12,57 +12,34 @@
   <button class="next" (click)="nextSlide()">❯</button>
 </section>
 
-<section class="matchs" style="display: flex; align-items: center; justify-content: center;">
-  <div style="flex-grow: 1; text-align: center;">
-    <h2>Prochain Match</h2>
-    <div class="match-list" *ngIf="matchsAVenir && matchsAVenir.length > 0">
-      <div class="match" style = "width: 60%;">
-        <p class="date">{{ matchsAVenir[0].date | date: 'd MMMM yyyy' }}</p>
-        <p class="teams">
-          <img src="assets/Logo.png" style="height: 50px; margin-right: 100px; ">
-          <span class="domicile">{{ matchsAVenir[0].domicile }}</span>
-          vs
-          <span class="exterieur">{{ matchsAVenir[0].exterieur }}</span>
-          <img src="assets/Logo.png" style="height: 50px; margin-left: 100px ;">
-        </p>
-        <p class="lieu">{{ matchsAVenir[0].lieu }}</p>
-      </div>
-      
-    </div>
-    <div class="match-list" *ngIf="!matchsAVenir || matchsAVenir.length === 0">
-      <p>Aucun match à venir n'est programmé pour le moment.</p>
-    </div>
-  </div>
-  
-</section>
+<app-prochain-match [matchsAVenir]="matchsAVenir"></app-prochain-match>
+<app-classement [getFocusedClassement]="classement"></app-classement>
 
 
 
-<section class="classement-ligue1" style="text-align: center; color: black;">
+
+<section class="classement-ligue1">
   <h2>Notre classement</h2>
   <div class="table-container">
-    <table class="classement-table" style="width: 80%; border-radius: 10px; overflow: hidden; margin: 0 auto; border: 2px solid orange;">
+    <table class="classement-table">
       <thead>
         <tr>
-          <th style="color: #ff6600;">Pos.</th>
-          <th style="color: #ff6600;">Logo</th>
-          <th style="color: #ff6600;">Club</th>
-          <th style="color: #ff6600;">Pts</th>
-          <th style="color: #ff6600;">J</th>
-          <th style="color: #ff6600;">G</th>
-          <th style="color: #ff6600;">N</th>
-          <th style="color: #ff6600;">P</th>
-          <th style="color: #ff6600;">Diff.</th>
+          <th>Pos.</th>
+          <th>Logo</th>
+          <th>Club</th>
+          <th>Pts</th>
+          <th>J</th>
+          <th>G</th>
+          <th>N</th>
+          <th>P</th>
+          <th>Diff.</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let club of getFocusedClassement" [class.is-lorient]="club.club === 'FC Lorient'">
           <td>{{ club.pos }}</td>
-          <td><img src="assets/Logo.png" style="height: 30px;"></td>
-          <td>
-            <span *ngIf="club.club === 'FC Lorient'" style="font-weight: bold; color: #ff6600;">{{ club.club }}</span>
-            <span *ngIf="club.club !== 'FC Lorient'">{{ club.club }}</span>
-          </td>
+          <td><img src="assets/Logo.png" alt="logo" /></td>
+          <td>{{ club.club }}</td>
           <td>{{ club.pts }}</td>
           <td>{{ club.j }}</td>
           <td>{{ club.g }}</td>
@@ -74,6 +51,7 @@
     </table>
   </div>
 </section>
+
 
 ---
 
