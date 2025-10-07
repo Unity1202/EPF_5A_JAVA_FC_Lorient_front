@@ -7,6 +7,8 @@ import { ListeJoueursComponent } from "pages/liste-joueurs/liste-joueurs.compone
 import { AProposComponent } from "pages/a-propos/a-propos.component"
 import { LoginComponent } from "pages/login/login.component"
 import { RegisterComponent } from "pages/register/register.component"
+import { NextmatchComponent } from "pages/nextmatch/nextmatch.component"
+
 
 
 const routes: Routes = [
@@ -17,6 +19,7 @@ const routes: Routes = [
   { path: "infos", component: AProposComponent },
   { path: "login", component: LoginComponent},
   { path: "register", component: RegisterComponent},
+  { path: "matchs", component: NextmatchComponent},
   { path: "**", redirectTo: "", pathMatch: "full" },
 
   

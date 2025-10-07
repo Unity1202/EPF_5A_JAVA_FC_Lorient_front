@@ -1,0 +1,272 @@
+.matchs-page {
+    background-image: url('../../../assets/bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    padding: 40px 20px;
+    font-family: "konsole", sans-serif;
+    position: relative;
+  
+    .btn-retour {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: #ff6600;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 5px;
+      font-family: "konsole", sans-serif;
+      font-weight: bold;
+      font-size: 1em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  
+      &:hover {
+        background-color: #e55a00;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+      }
+    }
+  
+    // Section Prochain Match
+    .section-prochain-match {
+      max-width: 900px;
+      margin: 0 auto 60px;
+      text-align: center;
+  
+      h1 {
+        color: white;
+        font-weight: bold;
+        font-size: 2.5em;
+        margin-bottom: 30px;
+        letter-spacing: 1px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+  
+      .match-card.prochain {
+        background: linear-gradient(135deg, #fff9f5 0%, #fffaf5 100%);
+        border: 3px solid #ff6600;
+        box-shadow: 0 0 30px rgba(255, 102, 0, 0.5);
+        
+        &:hover {
+          box-shadow: 0 0 40px rgba(255, 102, 0, 0.7);
+        }
+      }
+  
+      .no-match {
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 40px;
+        border-radius: 10px;
+        
+        p {
+          color: #666;
+          font-size: 1.2em;
+        }
+      }
+    }
+  
+    // Section Matchs à Venir
+    .section-matchs-avenir,
+    .section-matchs-precedents {
+      max-width: 1400px;
+      margin: 0 auto 60px;
+      text-align: center;
+  
+      h2 {
+        color: white;
+        font-weight: bold;
+        font-size: 2em;
+        margin-bottom: 30px;
+        letter-spacing: 1px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+  
+      .matchs-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 30px;
+        padding: 0 20px;
+      }
+    }
+  
+    // Carte de match générique
+    .match-card {
+      background-color: #fffaf5;
+      border: 2px solid #ff6600;
+      border-radius: 10px;
+      padding: 25px 30px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s ease;
+  
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(255, 102, 0, 0.4);
+      }
+  
+      &.precedent {
+        background-color: #f5f5f5;
+        border-color: #999;
+        opacity: 0.9;
+  
+        .date {
+          color: #666;
+        }
+  
+        &:hover {
+          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+      }
+  
+      .date {
+        color: #ff6600;
+        font-weight: bold;
+        margin-bottom: 20px;
+        font-size: 1.1em;
+      }
+  
+      .teams {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 20px 0;
+        gap: 40px;
+        flex-wrap: wrap;
+  
+        .team {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          font-weight: bold;
+          font-size: 1.1em;
+          color: #333;
+  
+          img {
+            height: 50px;
+            width: 50px;
+            object-fit: contain;
+            transition: transform 0.2s ease;
+  
+            &:hover {
+              transform: scale(1.15);
+            }
+          }
+        }
+  
+        .vs {
+          font-size: 1.3em;
+          color: #ff6600;
+          font-weight: bold;
+          letter-spacing: 2px;
+        }
+  
+        .score-container {
+          .score {
+            font-size: 1.5em;
+            color: #333;
+            font-weight: bold;
+            background-color: #fff;
+            padding: 8px 20px;
+            border-radius: 5px;
+            border: 2px solid #ddd;
+          }
+        }
+      }
+  
+      .lieu {
+        margin-top: 15px;
+        font-size: 1em;
+        color: #555;
+        font-weight: 600;
+      }
+  
+      .btn-billeterie {
+        margin-top: 20px;
+        background-color: #ff6600;
+        color: white;
+        border: none;
+        padding: 12px 30px;
+        border-radius: 5px;
+        font-family: "konsole", sans-serif;
+        font-weight: bold;
+        font-size: 1em;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  
+        &:hover {
+          background-color: #e55a00;
+          transform: scale(1.05);
+          box-shadow: 0 6px 12px rgba(255, 102, 0, 0.4);
+        }
+  
+        &:active {
+          transform: scale(0.98);
+        }
+      }
+    }
+  
+    // Responsive
+    @media (max-width: 768px) {
+      padding: 20px 10px;
+  
+      .btn-retour {
+        top: 10px;
+        left: 10px;
+        padding: 10px 20px;
+        font-size: 0.9em;
+      }
+  
+      .section-prochain-match h1 {
+        font-size: 2em;
+      }
+  
+      .section-matchs-avenir,
+      .section-matchs-precedents {
+        h2 {
+          font-size: 1.6em;
+        }
+  
+        .matchs-grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+          padding: 0 10px;
+        }
+      }
+  
+      .match-card {
+        padding: 20px;
+  
+        .teams {
+          gap: 20px;
+          
+          .team {
+            font-size: 1em;
+  
+            img {
+              height: 40px;
+              width: 40px;
+            }
+          }
+  
+          .vs {
+            font-size: 1.1em;
+          }
+        }
+      }
+    }
+  
+    @media (max-width: 480px) {
+      .match-card .teams {
+        flex-direction: column;
+        gap: 15px;
+  
+        .vs {
+          transform: rotate(90deg);
+          margin: 10px 0;
+        }
+      }
+    }
+  }

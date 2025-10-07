@@ -19,6 +19,8 @@ import { ListeJoueursComponent } from "pages/liste-joueurs/liste-joueurs.compone
 import { AProposComponent } from "pages/a-propos/a-propos.component"
 import { LoginComponent } from "pages/login/login.component"
 import { RegisterComponent } from "pages/register/register.component"
+import { NextmatchComponent } from "pages/nextmatch/nextmatch.component"
+
 
 
 
@@ -32,7 +34,8 @@ import { RegisterComponent } from "pages/register/register.component"
     ForumComponent,
     AProposComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    NextmatchComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,94 @@
+<div class="matchs-page">
+    <button class="btn-retour" (click)="retour()">
+      ← Retour
+    </button>
+  
+    <!-- Prochain Match -->
+    <section class="section-prochain-match">
+      <h1>Prochain Match</h1>
+      
+      <div class="match-card prochain" *ngIf="prochainMatch">
+        <p class="date">{{ prochainMatch.date | date: 'd MMMM yyyy' }}</p>
+        <div class="teams">
+          <div class="team">
+            <img src="assets/Logo.png" alt="logo domicile" />
+            <span class="domicile">{{ prochainMatch.domicile }}</span>
+          </div>
+  
+          <span class="vs">VS</span>
+  
+          <div class="team">
+            <span class="exterieur">{{ prochainMatch.exterieur }}</span>
+            <img src="assets/Logo.png" alt="logo extérieur" />
+          </div>
+        </div>
+        <p class="lieu">{{ prochainMatch.lieu }}</p>
+        
+        <button class="btn-billeterie" *ngIf="prochainMatch.billeterieUrl" 
+                (click)="ouvrirBilleterie(prochainMatch.billeterieUrl)">
+          Réserver mes billets
+        </button>
+      </div>
+  
+      <div class="no-match" *ngIf="!prochainMatch">
+        <p>Aucun match à venir pour le moment</p>
+      </div>
+    </section>
+  
+    <!-- Matchs à Venir -->
+    <section class="section-matchs-avenir" *ngIf="matchsAVenir.length > 0">
+      <h2>Matchs à Venir</h2>
+      
+      <div class="matchs-grid">
+        <div class="match-card" *ngFor="let match of matchsAVenir">
+          <p class="date">{{ match.date | date: 'd MMMM yyyy' }}</p>
+          <div class="teams">
+            <div class="team">
+              <img src="assets/Logo.png" alt="logo domicile" />
+              <span class="domicile">{{ match.domicile }}</span>
+            </div>
+  
+            <span class="vs">VS</span>
+  
+            <div class="team">
+              <span class="exterieur">{{ match.exterieur }}</span>
+              <img src="assets/Logo.png" alt="logo extérieur" />
+            </div>
+          </div>
+          <p class="lieu">{{ match.lieu }}</p>
+          
+          <button class="btn-billeterie" *ngIf="match.billeterieUrl" 
+                  (click)="ouvrirBilleterie(match.billeterieUrl)">
+            Réserver mes billets
+          </button>
+        </div>
+      </div>
+    </section>
+  
+    <!-- Matchs Précédents -->
+    <section class="section-matchs-precedents" *ngIf="matchsPrecedents.length > 0">
+      <h2>Matchs Précédents</h2>
+      
+      <div class="matchs-grid">
+        <div class="match-card precedent" *ngFor="let match of matchsPrecedents">
+          <p class="date">{{ match.date | date: 'd MMMM yyyy' }}</p>
+          <div class="teams">
+            <div class="team">
+              <img src="assets/Logo.png" alt="logo domicile" />
+              <span class="domicile">{{ match.domicile }}</span>
+            </div>
+  
+            <div class="score-container">
+              <span class="score">{{ match.scoreDomicile }} - {{ match.scoreExterieur }}</span>
+            </div>
+  
+            <div class="team">
+              <span class="exterieur">{{ match.exterieur }}</span>
+              <img src="assets/Logo.png" alt="logo extérieur" />
+            </div>
+          </div>
+          <p class="lieu">{{ match.lieu }}</p>
+        </div>
+      </div>
+    </section>
+  </div>
