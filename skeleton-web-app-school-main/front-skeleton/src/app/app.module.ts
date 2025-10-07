@@ -15,6 +15,7 @@ import { AppComponent } from "./app.component"
 import { NavbarComponent } from "./navbar/navbar.component"
 import { HomeComponent } from "./home/home.component"
 import { AppRoutingModule } from "./app-routing.module"
+import { ForumComponent } from "./forum/forum.component"
 
 
 
@@ -22,7 +23,8 @@ import { AppRoutingModule } from "./app-routing.module"
   declarations: [
     AppComponent,
     NavbarComponent,
-    HomeComponent
+    HomeComponent,
+    ForumComponent
   ],
   imports: [
     BrowserModule,
