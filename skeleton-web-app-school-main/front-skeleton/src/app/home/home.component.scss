@@ -132,6 +132,12 @@ body {
 
 .matchs-container {
   width: 70%;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  
+  &:hover {
+    transform: scale(1.02);
+  }
 }
 
 .matchs-container h2 {
