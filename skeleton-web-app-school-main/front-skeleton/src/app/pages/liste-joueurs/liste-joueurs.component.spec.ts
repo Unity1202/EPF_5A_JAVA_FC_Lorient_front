@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProchainMatchComponent } from './prochain-match.component';
+import { ListeJoueursComponent } from './liste-joueurs.component';
 
-describe('ProchainMatchComponent', () => {
-  let component: ProchainMatchComponent;
-  let fixture: ComponentFixture<ProchainMatchComponent>;
+describe('ListeJoueursComponent', () => {
+  let component: ListeJoueursComponent;
+  let fixture: ComponentFixture<ListeJoueursComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ProchainMatchComponent]
+      imports: [ListeJoueursComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ProchainMatchComponent);
+    fixture = TestBed.createComponent(ListeJoueursComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

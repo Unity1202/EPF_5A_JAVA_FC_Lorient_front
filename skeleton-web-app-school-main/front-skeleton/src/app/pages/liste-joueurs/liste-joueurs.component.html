@@ -1,0 +1,14 @@
+<section class="joueurs">
+    <h2>⚽ Effectif du FC Lorient</h2>
+    <div class="joueurs-grid">
+      <div class="joueur-card" *ngFor="let j of joueurs">
+        <img [src]="j.photo" alt="{{ j.nom }}">
+        <div class="info">
+          <h3>{{ j.nom }}</h3>
+          <p>{{ j.poste }}</p>
+          <span>#{{ j.numero }}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  

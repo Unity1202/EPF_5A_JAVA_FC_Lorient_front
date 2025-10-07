@@ -1,0 +1,13 @@
+<section class="boutique">
+    <h2>Boutique Officielle</h2>
+    <div class="produits">
+      <div class="produit" *ngFor="let p of produits">
+        <img [src]="p.image" alt="{{ p.nom }}">
+        <h3>{{ p.nom }}</h3>
+        <p class="description">{{ p.description }}</p>
+        <p class="prix">{{ p.prix | currency:'EUR' }}</p>
+        <button>Ajouter au panier</button>
+      </div>
+    </div>
+  </section>
+  

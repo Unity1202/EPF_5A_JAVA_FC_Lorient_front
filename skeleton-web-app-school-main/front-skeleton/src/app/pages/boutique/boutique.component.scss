@@ -1,0 +1,67 @@
+.boutique {
+    text-align: center;
+    padding: 40px;
+    font-family: 'Consolas', monospace;
+  
+    h2 {
+      color: #ff6600;
+      margin-bottom: 40px;
+    }
+  
+    .produits {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+  
+    .produit {
+      background: #fff;
+      border: 2px solid #ff6600;
+      border-radius: 16px;
+      width: 250px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+  
+      &:hover {
+        transform: scale(1.05);
+      }
+  
+      img {
+        width: 100%;
+        border-radius: 10px;
+      }
+  
+      h3 {
+        margin: 15px 0 5px;
+        color: #222;
+      }
+  
+      .description {
+        font-size: 0.9rem;
+        color: #666;
+        margin-bottom: 10px;
+      }
+  
+      .prix {
+        font-weight: bold;
+        color: #ff6600;
+        margin-bottom: 15px;
+      }
+  
+      button {
+        background-color: #ff6600;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+  
+        &:hover {
+          background-color: #e45a00;
+        }
+      }
+    }
+  }
+  

@@ -1,41 +1,27 @@
-import { NgModule } from "@angular/core"
-import { BrowserModule } from "@angular/platform-browser"
-
-
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations"
-
-import { MatListModule } from "@angular/material/list"
-
-import { FormsModule } from "@angular/forms"
-import { MatIconModule } from "@angular/material/icon"
-import { MatButtonModule } from "@angular/material/button"
-
-import { HttpClientModule } from "@angular/common/http"
-import { AppComponent } from "./app.component"
-import { NavbarComponent } from "./navbar/navbar.component"
-import { HomeComponent } from "./home/home.component"
-import { AppRoutingModule } from "./app-routing.module"
-
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
+import { NavbarComponent } from 'navbar/navbar.component';
+import { CommonModule } from '@angular/common';
+import { BoutiqueComponent } from 'pages/boutique/boutique.component';
+import { ListeJoueursComponent } from 'pages/liste-joueurs/liste-joueurs.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    HomeComponent,
     NavbarComponent,
-    HomeComponent
+    BoutiqueComponent,
+    ListeJoueursComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
-    MatListModule,
-    FormsModule,
-    MatIconModule,
-    MatButtonModule,
-    HttpClientModule,
+    CommonModule
   ],
-  providers: [],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule { }
