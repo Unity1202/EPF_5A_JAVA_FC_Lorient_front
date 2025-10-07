@@ -1,8 +1,14 @@
 body {
-  scroll-snap-type: y mandatory; /* Snap vertical obligatoire */
+  scroll-snap-type: y mandatory; 
   overflow-y: scroll;
   height: 100vh;
   font-family: "Konsole", sans-serif;
+
+  background-image: 'assets/bg.jpg'; 
+  background-size: cover;        
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-attachment: fixed;
 }
 
 
@@ -279,22 +285,89 @@ body {
 }
 
 /* ===== Footer ===== */
-.socials {
-  text-align: center;
-  padding: 20px;
-  background-color: #000;
+.footer {
+  background-color: rgba(0,0,0,0.85);
+  color: #fff;
+  font-family: "Konsole", sans-serif;
+  padding: 40px 20px;
+  width: 100%;
+  box-sizing: border-box;
+
+  .footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 30px;
+  }
+
+  .footer-section {
+    flex: 1 1 200px;
+    min-width: 180px;
+
+    h3 {
+      color: #ff6600;
+      margin-bottom: 15px;
+      font-size: 1.2em;
+    }
+
+    p, li, a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.95em;
+      margin-bottom: 8px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    a:hover {
+      color: #ff6600;
+    }
+  }
+
+  .socials {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    a {
+      color: #fff;
+      font-size: 1.5rem;
+      transition: color 0.2s, transform 0.2s;
+
+      &:hover {
+        color: #ff6600;
+        transform: scale(1.2);
+      }
+    }
+  }
+
+  .footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 0.9em;
+    color: #ccc;
+  }
 }
 
-.socials a {
-  color: white;
-  margin: 0 15px;
-  font-size: 1.8rem;
-  transition: color 0.2s;
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .footer-section {
+    text-align: center;
+  }
 }
 
-.socials a:hover {
-  color: #ff6600;
-}
 
 
 
@@ -366,10 +439,4 @@ body {
   transform: scale(1.1);
 }
 
-/* Coins arrondis du tableau */
-.classement-table thead tr:first-child th:first-child {
-  border-top-left-radius: 0px;
-}
-.classement-table thead tr:first-child th:last-child {
-  border-top-right-radius: 0px;
-}
+

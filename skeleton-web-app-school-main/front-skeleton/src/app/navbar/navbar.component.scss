@@ -2,8 +2,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #000; /* exemple : fond noir, à adapter */
-  padding: 10px 40px;
+  background-color: #111; /* plus sombre pour un look moderne */
+  padding: 15px 50px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   scroll-snap-stop: always;
 }
 
@@ -12,29 +16,33 @@
   align-items: center;
   text-decoration: none;
   color: white;
+  gap: 15px;
 }
 
 .logo-image {
-  width: 100px;
+  width: 70px;
   height: auto;
-  transition: transform 0.2s ease-in-out;
-}
+  border-radius: 6px; /* coins légèrement arrondis */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 
-.logo-image:hover {
-  transform: scale(1.05);
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(255,102,0,0.5);
+  }
 }
 
 .logo {
-  font-family: "Konsole", sans-serif; /* ou la font Konsole Bold si elle est importée */
+  font-family: "Konsole", sans-serif;
   font-weight: bold;
-  font-size: 1.8rem;
-  margin-left: 10px;
+  font-size: 2rem;
+  letter-spacing: 1px;
+  color: #ff6600;
 }
 
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 25px;
+  gap: 30px;
 }
 
 .nav-links a {
@@ -43,9 +51,28 @@
   font-family: "Konsole", sans-serif;
   font-weight: bold;
   font-size: 1.1rem;
-  transition: color 0.2s ease-in-out;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    color: #ff6600;
+    background-color: rgba(255,102,0,0.1);
+  }
 }
 
-.nav-links a:hover {
-  color: #ff6600; /* couleur orange du FC Lorient */
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 10px 20px;
+    gap: 10px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    align-items: center;
+  }
 }

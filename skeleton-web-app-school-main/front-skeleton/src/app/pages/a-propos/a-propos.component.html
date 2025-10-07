@@ -1,0 +1,44 @@
+<section class="apropos">
+    <div class="header">
+      <h1>À propos du {{ clubInfo.nom }}</h1>
+      <p class="intro">
+        Le {{ clubInfo.nom }} est un club de football français fondé en {{ clubInfo.fondation }}.
+        Surnommé "Les Merlus", le club évolue au {{ clubInfo.stade }} et arbore fièrement les couleurs {{ clubInfo.couleur }}.
+      </p>
+    </div>
+  
+    <div class="contenu">
+      <div class="texte">
+        <p>
+          Le FC Lorient a connu plusieurs montées et descentes entre la Ligue 1 et la Ligue 2.
+          Le club est réputé pour sa formation de jeunes talents et son engagement auprès des supporters locaux.
+        </p>
+        <p>
+          Le Stade du Moustoir, inauguré en 1959, a vu défiler de nombreux joueurs emblématiques.
+          Le club continue de renforcer sa présence nationale et européenne.
+        </p>
+        <p>
+          Vous pouvez suivre l’actualité du club sur les réseaux sociaux ou visiter le site officiel pour plus d’informations.
+        </p>
+      </div>
+  
+      <div class="infos-club">
+        <h2>Infos clés</h2>
+        <ul>
+          <li><strong>Nom :</strong> {{ clubInfo.nom }}</li>
+          <li><strong>Fondation :</strong> {{ clubInfo.fondation }}</li>
+          <li><strong>Stade :</strong> {{ clubInfo.stade }}</li>
+          <li><strong>Couleurs :</strong> {{ clubInfo.couleur }}</li>
+          <li><strong>Site web :</strong> <a [href]="clubInfo.siteWeb" target="_blank">{{ clubInfo.siteWeb }}</a></li>
+        </ul>
+  
+        <div class="reseaux">
+          <span>Suivez-nous :</span>
+          <a *ngFor="let r of reseaux" [href]="r.url" target="_blank">
+            <img [src]="r.icone" [alt]="r.nom">
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
