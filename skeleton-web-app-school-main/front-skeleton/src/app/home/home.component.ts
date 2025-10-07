@@ -13,14 +13,14 @@ export class HomeComponent implements OnInit {
   currentSlide = 0;
   articles = [
     // Exemples d’articles :
+    { titre: 'Le FCL et la communauté locale', resume: 'Engagements et initiatives...', image: 'assets/articles/communaute.jpg' },
+    { titre: 'Retour sur l’histoire du FCL', resume: 'Les moments clés depuis 1926...', image: 'assets/articles/histoire-fcl.jpg' },
     { titre: 'Victoire du FCL face à Rennes', resume: 'Un match spectaculaire à Moustoir...', image: 'assets/articles/lorient-rennes.jpg' },
     { titre: 'Présentation du nouveau maillot', resume: 'Découvrez le maillot 2025...', image: 'assets/articles/maillot2025.jpg' },
     { titre: 'Interview exclusive de l’entraîneur', resume: 'Les ambitions pour la saison...', image: 'assets/articles/faivre.jpg' },
     { titre: 'Analyse tactique du dernier match', resume: 'Décryptage des choix stratégiques...', image: 'assets/articles/analyse-tactique.jpg' },
     { titre: 'Focus sur le jeune talent breton', resume: 'Portrait d’un espoir du club...', image: 'assets/articles/jeune-talent.jpg' },
-    { titre: 'Retour sur l’histoire du FCL', resume: 'Les moments clés depuis 1926...', image: 'assets/articles/histoire-fcl.jpg' },
     { titre: 'Les coulisses de l’entraînement', resume: 'Une journée avec les joueurs...', image: 'assets/articles/entrainement.jpg' },
-    { titre: 'Le FCL et la communauté locale', resume: 'Engagements et initiatives...', image: 'assets/articles/communaute.jpg' },
     { titre: 'Préparation physique : les secrets', resume: 'Comment les joueurs restent au top...', image: 'assets/articles/preparation-physique.jpg' },
     // ...ajoute-en autant que nécessaire
   ];

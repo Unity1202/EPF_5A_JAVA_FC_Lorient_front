@@ -7,5 +7,16 @@
     <li><a routerLink="/boutique">Boutique</a></li>
     <li><a routerLink="/equipe">Équipe</a></li>
     <li><a routerLink="/infos">Infos</a></li>
+    <!-- NOUVEAU: Lien de Connexion -->
+    <li class="login-link">
+      <a routerLink="/login">
+        <mat-icon>person_outline</mat-icon>
+        Connexion
+      </a>
+    </li>
   </ul>
 </nav>
+
+<div class="content">
+  <router-outlet></router-outlet>
+</div>

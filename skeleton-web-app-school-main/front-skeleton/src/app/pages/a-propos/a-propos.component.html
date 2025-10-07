@@ -1,3 +1,4 @@
+<body>
 <section class="apropos">
     <div class="header">
       <h1>À propos du {{ clubInfo.nom }}</h1>
@@ -25,11 +26,11 @@
       <div class="infos-club">
         <h2>Infos clés</h2>
         <ul>
-          <li><strong>Nom :</strong> {{ clubInfo.nom }}</li>
-          <li><strong>Fondation :</strong> {{ clubInfo.fondation }}</li>
-          <li><strong>Stade :</strong> {{ clubInfo.stade }}</li>
-          <li><strong>Couleurs :</strong> {{ clubInfo.couleur }}</li>
-          <li><strong>Site web :</strong> <a [href]="clubInfo.siteWeb" target="_blank">{{ clubInfo.siteWeb }}</a></li>
+          <li><strong>Nom : </strong> {{ clubInfo.nom }}</li>
+          <li><strong>Fondation : </strong> {{ clubInfo.fondation }}</li>
+          <li><strong>Stade : </strong> {{ clubInfo.stade }}</li>
+          <li><strong>Couleurs : </strong> {{ clubInfo.couleur }}</li>
+          <li><strong>Site web : </strong> <a [href]="clubInfo.siteWeb" target="_blank">{{ clubInfo.siteWeb }}</a></li>
         </ul>
   
         <div class="reseaux">
@@ -41,4 +42,4 @@
       </div>
     </div>
   </section>
-  
+</body>

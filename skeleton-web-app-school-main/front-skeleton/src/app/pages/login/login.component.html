@@ -1,0 +1,39 @@
+<div class="login-container">
+    <div class="login-card">
+        <h2 class="title">Portail de Connexion</h2>
+        <form (ngSubmit)="onSubmit()">
+            
+            <div class="form-group">
+                <label for="username">Nom d'utilisateur / Email</label>
+                <input 
+                    type="text" 
+                    id="username" 
+                    name="username" 
+                    [(ngModel)]="username" 
+                    required 
+                    placeholder="Entrez votre identifiant"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="password">Mot de passe</label>
+                <input 
+                    type="password" 
+                    id="password" 
+                    name="password" 
+                    [(ngModel)]="password" 
+                    required 
+                    placeholder="Entrez votre mot de passe"
+                >
+            </div>
+
+            <button type="submit" [disabled]="!isFormValid()" class="submit-button">
+                Se connecter
+            </button>
+        </form>
+        
+        <p class="signup-link">
+            Pas encore de compte ? <a routerLink="/register">S'inscrire</a> <!-- LIAISON ROUTERLINK MISE À JOUR -->
+        </p>
+    </div>
+</div>
