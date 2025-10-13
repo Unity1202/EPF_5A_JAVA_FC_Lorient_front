@@ -1,8 +1,14 @@
 <body>
 <section class="joueurs">
     <h2>Nos Joueurs</h2>
+    <div class="filtres">
+      <label for="poste">Poste</label>
+      <select id="poste" class="poste-select" [(ngModel)]="selectedPoste">
+        <option *ngFor="let p of postes" [value]="p">{{ p }}</option>
+      </select>
+    </div>
     <div class="joueurs-grid">
-      <div class="joueur-card" *ngFor="let j of joueurs">
+      <div class="joueur-card" *ngFor="let j of filteredJoueurs">
         <img [src]="j.photo" alt="{{ j.nom }}">
         <div class="info">
           <h3>{{ j.nom }}</h3>
