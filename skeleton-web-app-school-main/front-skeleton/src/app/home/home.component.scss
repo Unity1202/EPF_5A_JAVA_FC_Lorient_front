@@ -141,12 +141,28 @@ body {
 }
 
 .matchs-container h2 {
-  color: white;
   font-family: "konsole", sans-serif;
-  font-weight: bold;
-  font-size: 2em;
-  margin-bottom: 20px;
-  letter-spacing: 1px;
+  font-weight: 800;
+  font-size: 2.2rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 24px;
+  background: linear-gradient(90deg, #ff6600 0%, #ffa04d 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 2px 8px rgba(255, 102, 0, 0.25);
+
+  &::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 4px;
+    margin: 12px auto 0;
+    background: linear-gradient(90deg, #ff6600 0%, #ffa04d 100%);
+    border-radius: 2px;
+    box-shadow: 0 2px 6px rgba(255, 102, 0, 0.4);
+  }
 }
 
 /* Carte principale du match */
@@ -250,12 +266,28 @@ body {
 }
 
 .articles-section h2 {
-  font-size: 2em;
-  margin-bottom: 20px;
-  color: white;
-  letter-spacing: 1px;
   font-family: "Konsole", sans-serif;
-  font-weight: bold;
+  font-weight: 800;
+  font-size: 2.2rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 24px;
+  background: linear-gradient(90deg, #ff6600 0%, #ffa04d 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 2px 8px rgba(255, 102, 0, 0.25);
+
+  &::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 4px;
+    margin: 12px auto 0;
+    background: linear-gradient(90deg, #ff6600 0%, #ffa04d 100%);
+    border-radius: 2px;
+    box-shadow: 0 2px 6px rgba(255, 102, 0, 0.4);
+  }
 }
 
 .articles-grid {
@@ -426,10 +458,27 @@ body {
 }
 
 .classement-ligue1 h2 {
-  color: white;
-  margin-bottom: 20px;
-  font-size: 2em;
-  letter-spacing: 1px;
+  font-weight: 800;
+  font-size: 2.2rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 24px;
+  background: linear-gradient(90deg, #ff6600 0%, #ffa04d 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 2px 8px rgba(255, 102, 0, 0.25);
+
+  &::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 4px;
+    margin: 12px auto 0;
+    background: linear-gradient(90deg, #ff6600 0%, #ffa04d 100%);
+    border-radius: 2px;
+    box-shadow: 0 2px 6px rgba(255, 102, 0, 0.4);
+  }
 }
 
 .table-container {

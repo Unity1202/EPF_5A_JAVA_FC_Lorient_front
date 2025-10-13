@@ -26,6 +26,8 @@ interface ApiPlayer {
 })
 export class ListeJoueursComponent implements OnInit {
   joueurs: Joueur[] = [];
+  postes: string[] = ['Tous', 'Gardien', 'Défenseur', 'Milieu', 'Attaquant'];
+  selectedPoste: string = 'Tous';
 
   constructor(private http: HttpClient) {}
 
@@ -43,6 +45,13 @@ export class ListeJoueursComponent implements OnInit {
         this.joueurs = [];
       }
     });
+  }
+
+  get filteredJoueurs(): Joueur[] {
+    if (this.selectedPoste === 'Tous') {
+      return this.joueurs;
+    }
+    return this.joueurs.filter(j => j.poste === this.selectedPoste);
   }
 
   private formatPosition(position: string): string {
