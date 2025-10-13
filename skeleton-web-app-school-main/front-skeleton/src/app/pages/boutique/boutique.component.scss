@@ -53,6 +53,8 @@ body{
       padding: 15px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: flex;
+      flex-direction: column;
   
       &:hover {
         transform: translateY(-3px);
@@ -88,7 +90,8 @@ body{
       .prix {
         font-weight: 700;
         color: #ff6600;
-        margin-bottom: 15px;
+        margin-top: auto; /* pousse prix+button vers le bas */
+        margin-bottom: 10px;
       }
   
       button {
