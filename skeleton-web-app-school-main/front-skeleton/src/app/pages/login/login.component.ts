@@ -1,38 +1,50 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'auth-service.service';
+
+
+export interface User{
+  id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+}
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
-  username: string = '';
-  password: string = '';
+export class LoginComponent {
+  user: User = { id: '', firstName: '', lastName: '', email: '', password: '' };
+  loginFailed: boolean = false;
 
-  constructor() { }
+  constructor(private authService: AuthService) {}
 
-  ngOnInit(): void {
-    // Initialisation ou vérification de l'état de connexion ici
-  }
-
-  
-  onSubmit(): void {
-    if (this.username && this.password) {
-      console.log('Tentative de connexion avec :', this.username, this.password);
-      
-    
-      alert(`Connexion simulée pour l'utilisateur: ${this.username}`);
-      
-
-      this.username = '';
-      this.password = '';
+  onLogin() {
+    if (this.isFormValid()) {
+      this.authService.login(this.user.email, this.user.password).subscribe(
+        (success) => {
+          if (success) {
+            console.log('Connexion réussie');
+          } else {
+            this.loginFailed = true;
+            console.log('Échec de la connexion');
+          }
+        },
+        (error) => {
+          console.error('Erreur lors de la connexion', error);
+          this.loginFailed = true;
+        }
+      );
     } else {
-      alert("Veuillez remplir tous les champs.");
+      console.log('Formulaire invalide');
     }
   }
 
-
   isFormValid(): boolean {
-    return !!(this.username.trim() && this.password.trim());
+    return true; // Toujours valide pour l'instant
   }
+
+  
 }

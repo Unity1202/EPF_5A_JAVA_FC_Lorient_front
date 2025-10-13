@@ -1,58 +1,49 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'; // Pour naviguer après l'inscription
+import { HttpClient } from '@angular/common/http'; // Importer HttpClient
+
+
+export interface User {
+  id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+}
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
+
 export class RegisterComponent implements OnInit {
-  // Variables du formulaire d'inscription
-  firstName: string = '';
-  lastName: string = '';
-  email: string = '';
-  password: string = '';
-  
-  constructor(private router: Router) { } // Injecter le Router
+  user: User = { id: '', firstName: '', lastName: '', email: '', password: '' }; // Initialiser avec un objet User
 
-  ngOnInit(): void {
-  }
+  constructor(private http: HttpClient, private router: Router) {}
 
-  /**
-   * Vérifie si tous les champs requis sont remplis et valides.
-   */
-  isFormValid(): boolean {
-    // Vérification simple que tous les champs sont non vides après avoir retiré les espaces blancs
-    return !!(
-      this.firstName.trim() && 
-      this.lastName.trim() && 
-      this.email.trim() && 
-      this.password.trim()
-    );
-  }
+  ngOnInit(): void {}
 
-  /**
-   * Gère la soumission du formulaire d'inscription.
-   */
-  onSubmit(): void {
-    if (this.isFormValid()) {
-      console.log('Tentative d\'inscription avec :', {
-        firstName: this.firstName,
-        lastName: this.lastName,
-        email: this.email,
-        password: this.password
+  registerUser(): void {
+    if (this.isFormValid()) { // Vérifier si le formulaire est valide
+      const apiUrl = `http://localhost:8080/users`; 
+      this.http.post(apiUrl, this.user).subscribe({
+        next: (response) => {
+          console.log('Utilisateur créé avec succès', response);
+          this.router.navigate(['/login']); 
+        },
+        error: (err) => {
+          console.error('Erreur lors de la création de l\'utilisateur', err);
+        }
       });
-      
-      // LOGIQUE D'INSCRIPTION RÉELLE (appel à l'API)
-
-      // Simulation de succès
-      alert(`Inscription de ${this.firstName} réussie ! Redirection vers la connexion.`);
-      
-      // Réinitialiser les champs et rediriger l'utilisateur vers la page de connexion après l'inscription
-      this.router.navigate(['/login']);
-      
     } else {
-      alert("Veuillez remplir correctement tous les champs.");
+      console.error('Le formulaire n\'est pas valide');
     }
   }
+
+  isFormValid(): boolean { // Nouvelle fonction pour valider le formulaire
+    return this.user.firstName !== '' && this.user.lastName !== '' && this.user.email !== '' && this.user.password !== '';
+  }
+
+  
 }

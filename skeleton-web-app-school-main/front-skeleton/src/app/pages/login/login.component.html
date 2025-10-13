@@ -1,17 +1,17 @@
 <div class="login-container">
     <div class="login-card">
         <h2 class="title">Portail de Connexion</h2>
-        <form (ngSubmit)="onSubmit()">
+        <form (ngSubmit)="onLogin()">
             
             <div class="form-group">
-                <label for="username">Nom d'utilisateur / Email</label>
+                <label for="username">Email</label>
                 <input 
                     type="text" 
                     id="username" 
                     name="username" 
-                    [(ngModel)]="username" 
+                    [(ngModel)]="user.email" 
                     required 
-                    placeholder="Entrez votre identifiant"
+                    placeholder="Entrez votre email"
                 >
             </div>
 
@@ -21,7 +21,7 @@
                     type="password" 
                     id="password" 
                     name="password" 
-                    [(ngModel)]="password" 
+                    [(ngModel)]="user.password" 
                     required 
                     placeholder="Entrez votre mot de passe"
                 >

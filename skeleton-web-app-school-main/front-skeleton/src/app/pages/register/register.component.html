@@ -2,7 +2,7 @@
 <div class="register-container">
     <div class="register-card">
         <h2 class="title">Créer votre compte</h2>
-        <form (ngSubmit)="onSubmit()">
+        <form (ngSubmit)="registerUser()">
             
             <div class="form-group">
                 <label for="firstName">Prénom</label>
@@ -10,7 +10,7 @@
                     type="text" 
                     id="firstName" 
                     name="firstName" 
-                    [(ngModel)]="firstName" 
+                    [(ngModel)]="user.firstName" 
                     required 
                     placeholder="Votre prénom"
                 >
@@ -22,7 +22,7 @@
                     type="text" 
                     id="lastName" 
                     name="lastName" 
-                    [(ngModel)]="lastName" 
+                    [(ngModel)]="user.lastName" 
                     required 
                     placeholder="Votre nom"
                 >
@@ -34,7 +34,7 @@
                     type="email" 
                     id="email" 
                     name="email" 
-                    [(ngModel)]="email" 
+                    [(ngModel)]="user.email" 
                     required 
                     placeholder="example@lorient.fr"
                 >
@@ -46,13 +46,13 @@
                     type="password" 
                     id="password" 
                     name="password" 
-                    [(ngModel)]="password" 
+                    [(ngModel)]="user.password" 
                     required 
                     placeholder="Minimum 6 caractères"
                 >
             </div>
             
-            <button type="submit" [disabled]="!isFormValid()" class="submit-button">
+            <button type="submit" [disabled]="!isFormValid()" class="submit-button" (click)="registerUser()">
                 S'inscrire
             </button>
         </form>
