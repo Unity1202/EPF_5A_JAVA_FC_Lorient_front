@@ -1,0 +1,54 @@
+<div class="article-page" *ngIf="article">
+   
+  
+    <!-- En-tête de l'article -->
+    <header class="article-header">
+      <div class="header-overlay">
+        <h1 class="article-title">{{ article!.title }}</h1>
+        <p class="article-date">{{ formatDate(article!.createdAt) }}</p>
+      </div>
+      <img [src]="article!.image" [alt]="article!.title" class="header-image" />
+    </header>
+  
+    <!-- Contenu principal -->
+    <section class="article-content-section">
+      <div class="content-container">
+        <!-- Si c'est une vidéo -->
+        <div *ngIf="isVideo && videoUrl" class="video-container">
+          <iframe 
+            [src]="videoUrl" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+  
+        <!-- Si c'est du texte -->
+        <div *ngIf="!isVideo && article" class="article-text">
+          <p>{{ article!.content }}</p>
+        </div>
+      </div>
+    </section>
+  
+    <!-- Articles similaires -->
+    <section class="related-articles" *ngIf="relatedArticles.length > 0">
+      <h2>Articles similaires</h2>
+      <div class="related-grid">
+        <div 
+          class="related-card" 
+          *ngFor="let relatedArticle of relatedArticles"
+          (click)="navigateToArticle(relatedArticle)">
+          <img [src]="relatedArticle.image" [alt]="relatedArticle.title" />
+          <div class="related-info">
+            <h3>{{ relatedArticle.title }}</h3>
+            <p class="related-date">{{ formatDate(relatedArticle.createdAt) }}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  <!-- Message de chargement -->
+  <div class="loading" *ngIf="!article">
+    <p>Chargement de l'article...</p>
+  </div>

@@ -20,6 +20,7 @@ import { AProposComponent } from "pages/a-propos/a-propos.component"
 import { LoginComponent } from "pages/login/login.component"
 import { RegisterComponent } from "pages/register/register.component"
 import { NextmatchComponent } from "pages/nextmatch/nextmatch.component"
+import { ArticlesComponent } from "pages/articles/articles.component"
 
 
 
@@ -35,6 +36,7 @@ import { NextmatchComponent } from "pages/nextmatch/nextmatch.component"
     AProposComponent,
     LoginComponent,
     RegisterComponent,
+    ArticlesComponent,
     NextmatchComponent
   ],
   imports: [

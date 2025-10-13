@@ -8,6 +8,7 @@ import { AProposComponent } from "pages/a-propos/a-propos.component"
 import { LoginComponent } from "pages/login/login.component"
 import { RegisterComponent } from "pages/register/register.component"
 import { NextmatchComponent } from "pages/nextmatch/nextmatch.component"
+import { Article, ArticlesComponent } from './pages/articles/articles.component';
 
 
 
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: "login", component: LoginComponent},
   { path: "register", component: RegisterComponent},
   { path: "matchs", component: NextmatchComponent},
+  { path: "article/:id", component: ArticlesComponent},
   { path: "**", redirectTo: "", pathMatch: "full" },
 
   

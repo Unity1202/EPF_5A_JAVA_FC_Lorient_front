@@ -51,6 +51,7 @@ body {
   max-width: 500px;
   z-index: 10;
   font-family: "Konsole", sans-serif;
+  cursor: pointer;
 }
 
 .caption h2 {
@@ -94,15 +95,21 @@ body {
 /* Responsive */
 @media (max-width: 768px) {
   .carousel {
-    height: 300px; /* Sur mobile, on réduit la hauteur du carousel */
+    height: 300px; 
   }
   
-  .caption {
+  .caption  {
     left: 20px;
     right: 20px;
     bottom: 20px;
     padding: 15px;
     max-width: none;
+    animation: pop 3s infinite ease-in-out;
+
+    @keyframes pop {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
   }
   
   .caption h2 {
@@ -305,6 +312,12 @@ body {
   font-family: "Konsole", sans-serif;
   font-weight: bold;
   background-color: #fffaf5;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 24px rgba(255, 102, 0, 0.4);
+  }
 }
 
 .article-card img {
@@ -312,6 +325,9 @@ body {
   height: auto;
   object-fit: cover;
   
+  &:hover img {
+    transform: scale(1.05);
+  }
 }
 
 .article-info {

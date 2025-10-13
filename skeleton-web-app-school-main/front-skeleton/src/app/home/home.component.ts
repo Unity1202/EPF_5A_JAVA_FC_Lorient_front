@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 
 export interface Match {
@@ -50,7 +51,7 @@ export class HomeComponent implements OnInit {
   articles : Article[] = [];
   teams : Team[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
   ngOnInit(): void {
     this.http.get<Team[]>('http://localhost:8080/teams').subscribe(teams => {
     this.teams = teams;
@@ -152,5 +153,8 @@ export class HomeComponent implements OnInit {
     this.currentSlide = (this.currentSlide - 1 + this.articles.length) % this.articles.length;
   }
 
+  navigateToArticle(article: Article) {
+    this.router.navigate(['/article', article.id]);
+  }
 
 }
