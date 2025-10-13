@@ -230,9 +230,10 @@
         }
   
         .matchs-grid {
-          grid-template-columns: 1fr;
-          gap: 20px;
-          padding: 0 10px;
+          display: flex;
+          flex-direction: column; 
+          gap: 1.5rem; 
+          align-items: center; 
         }
       }
   

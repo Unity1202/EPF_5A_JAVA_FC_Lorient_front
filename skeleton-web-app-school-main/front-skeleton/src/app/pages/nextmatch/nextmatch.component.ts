@@ -1,13 +1,36 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
-interface Match {
-  date: Date;
-  domicile: string;
-  exterieur: string;
-  lieu: string;
-  scoreDomicile?: number;
-  scoreExterieur?: number;
-  billeterieUrl?: string;
+export interface Match {
+  id: number; // Correspond à SERIAL PRIMARY KEY
+  utcDate: string; // TIMESTAMP -> string (format ISO 8601)
+  status: string; // TEXT -> string
+  score_home: number | null; // INT -> number ou null si non défini
+  score_away: number | null; // INT -> number ou null si non défini
+  homeTeamId: number; // INT not null -> number
+  awayTeamId: number; // INT not null -> number
+
+  domicile?: string;
+  exterieur?: string;
+  domicileLogo?: string;
+  exterieurLogo?: string;
+  lieu?: string;
+}
+
+export interface Team {
+  id: number; // Correspond à SERIAL PRIMARY KEY
+  name: string; // TEXT -> string
+  shortName: string; // TEXT -> string
+  crest: string; // TEXT -> string
+  rank: number; // INT -> number
+  points: number; // INT -> number
+  played: number; // INT -> number
+  won: number; // INT -> number
+  drawn: number; // INT -> number
+  lost: number; // INT -> number
+  diff: number; // INT -> number
+
+  billeterieUrl?: string; // TEXT -> string
 }
 
 @Component({
@@ -16,137 +39,93 @@ interface Match {
   styleUrls: ['./nextmatch.component.scss']
 })
 export class NextmatchComponent implements OnInit {
+
   prochainMatch: Match | null = null;
   matchsAVenir: Match[] = [];
   matchsPrecedents: Match[] = [];
+  teams: Team[] = [];
+  tousLesMatchs: Match[] =[]
 
-  // Votre tableau de matchs
-  tousLesMatchs: Match[] = [
-    { 
-      date: new Date('2025-10-12'), 
-      domicile: 'FC Lorient', 
-      exterieur: 'OL', 
-      lieu: 'Stade du Moustoir',
-      billeterieUrl: 'https://billeterie.example.com/match1'
-    },
-    { 
-      date: new Date('2025-10-19'), 
-      domicile: 'PSG', 
-      exterieur: 'FC Lorient', 
-      lieu: 'Parc des Princes',
-      billeterieUrl: 'https://billeterie.example.com/match2'
-    },
-    { 
-      date: new Date('2025-10-26'), 
-      domicile: 'FC Lorient', 
-      exterieur: 'OM', 
-      lieu: 'Stade du Moustoir',
-      billeterieUrl: 'https://billeterie.example.com/match3'
-    },
-    { 
-      date: new Date('2025-11-02'), 
-      domicile: 'AS Monaco', 
-      exterieur: 'FC Lorient', 
-      lieu: 'Stade Louis II',
-      billeterieUrl: 'https://billeterie.example.com/match4'
-    },
-    { 
-      date: new Date('2025-11-09'), 
-      domicile: 'FC Lorient', 
-      exterieur: 'LOSC', 
-      lieu: 'Stade du Moustoir',
-      billeterieUrl: 'https://billeterie.example.com/match5'
-    },
-    { 
-      date: new Date('2025-11-16'), 
-      domicile: 'OGC Nice', 
-      exterieur: 'FC Lorient', 
-      lieu: 'Allianz Riviera',
-      billeterieUrl: 'https://billeterie.example.com/match6'
-    },
-    { 
-      date: new Date('2025-11-23'), 
-      domicile: 'FC Lorient', 
-      exterieur: 'Stade Rennais', 
-      lieu: 'Stade du Moustoir',
-      billeterieUrl: 'https://billeterie.example.com/match7'
-    },
-    { 
-      date: new Date('2025-11-30'), 
-      domicile: 'Montpellier HSC', 
-      exterieur: 'FC Lorient', 
-      lieu: 'Stade de la Mosson',
-      billeterieUrl: 'https://billeterie.example.com/match8'
-    },
-    { 
-      date: new Date('2025-12-07'), 
-      domicile: 'FC Lorient', 
-      exterieur: 'Girondins de Bordeaux', 
-      lieu: 'Stade du Moustoir',
-      billeterieUrl: 'https://billeterie.example.com/match9'
-    },
-    { 
-      date: new Date('2025-12-14'), 
-      domicile: 'Toulouse FC', 
-      exterieur: 'FC Lorient', 
-      lieu: 'Stadium de Toulouse',
-      billeterieUrl: 'https://billeterie.example.com/match10'
-    },
-    // Exemples de matchs précédents (ajoutez les vôtres)
-    { 
-      date: new Date('2025-09-28'), 
-      domicile: 'FC Lorient', 
-      exterieur: 'RC Lens', 
-      lieu: 'Stade du Moustoir',
-      scoreDomicile: 2,
-      scoreExterieur: 1
-    },
-    { 
-      date: new Date('2025-09-21'), 
-      domicile: 'Stade Brestois', 
-      exterieur: 'FC Lorient', 
-      lieu: 'Stade Francis-Le Blé',
-      scoreDomicile: 1,
-      scoreExterieur: 3
-    },
-    { 
-      date: new Date('2025-09-14'), 
-      domicile: 'FC Lorient', 
-      exterieur: 'AS Saint-Étienne', 
-      lieu: 'Stade du Moustoir',
-      scoreDomicile: 0,
-      scoreExterieur: 0
-    }
-  ];
+  constructor(private http: HttpClient) {}
+  
 
-  ngOnInit() {
-    this.chargerMatchs();
+
+  ngOnInit(): void {
+    this.initialiserMatchs();
+    
   }
+
+  fetchMatchs(): void {
+    this.http.get<Match[]>('http://localhost:8080/matchs').subscribe(data => {
+      console.log('Matchs reçus:', data);
+      this.matchsAVenir = data;
+      this.enrichirMatchs();
+    });
+  }
+
+  fetchTeams(): void {
+    this.http.get<Team[]>('http://localhost:8080/teams').subscribe(data => {
+      console.log('Équipes reçues:', data);
+      this.teams = data;
+      this.enrichirMatchs();
+    });
+  }
+
+  enrichirMatchs(): void {
+    if (this.tousLesMatchs.length === 0 || this.teams.length === 0) return;
+  
+    this.tousLesMatchs = this.tousLesMatchs.map(match => {
+      const homeTeam = this.teams.find(t => t.id === match.homeTeamId);
+      const awayTeam = this.teams.find(t => t.id === match.awayTeamId);
+      return {
+        ...match,
+        domicile: homeTeam?.shortName || 'Équipe A',
+        exterieur: awayTeam?.shortName || 'Équipe B',
+        domicileLogo: homeTeam?.crest || '',
+        exterieurLogo: awayTeam?.crest || '',
+        lieu: homeTeam?.name || '',
+        billeterieUrl: homeTeam?.billeterieUrl || ''
+      };
+    });
+  }
+  
+
+  initialiserMatchs(): void {
+    this.http.get<Team[]>('http://localhost:8080/teams').subscribe(teams => {
+      this.teams = teams;
+  
+      this.http.get<Match[]>('http://localhost:8080/matchs').subscribe(matchs => {
+        this.tousLesMatchs = matchs;
+        this.enrichirMatchs();
+        this.chargerMatchs();
+      });
+    });
+  }
+  
 
   chargerMatchs() {
     const maintenant = new Date();
 
     // Séparer les matchs futurs et passés
     const futurs = this.tousLesMatchs
-      .filter(m => m.date >= maintenant)
-      .sort((a, b) => a.date.getTime() - b.date.getTime());
+      .filter(m => new Date(m.utcDate as string) >= maintenant) // Conversion de m.utcDate en Date
+      .sort((a, b) => new Date(a.utcDate as string).getTime() - new Date(b.utcDate as string).getTime()); // Conversion de a.utcDate et b.utcDate en Date
 
     const passes = this.tousLesMatchs
-      .filter(m => m.date < maintenant)
-      .sort((a, b) => b.date.getTime() - a.date.getTime());
+      .filter(m => new Date(m.utcDate as string) < maintenant) // Conversion de m.utcDate en Date
+      .sort((a, b) => new Date(b.utcDate as string).getTime() - new Date(a.utcDate as string).getTime());
 
-    // Le prochain match est le premier des matchs futurs
+
     this.prochainMatch = futurs.length > 0 ? futurs[0] : null;
-    
-    // Les matchs à venir sont tous les matchs futurs sauf le premier
+
     this.matchsAVenir = futurs.slice(1);
     
-    // Les matchs précédents
+
     this.matchsPrecedents = passes;
   }
 
-  ouvrirBilleterie(url: string) {
-    window.open(url, '_blank');
+  ouvrirBilleterie() {
+    window.open('https://billetterie.fclorient.bzh/fr/');
   }
 
   retour() {
