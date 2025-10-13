@@ -1,0 +1,219 @@
+<div class="admin-container">
+    <!-- Header -->
+    <header class="admin-header">
+      <h1>Panneau d'Administration</h1>
+      <button class="home-btn" routerLink="/">Retour au site</button>
+    </header>
+  
+    <!-- Tabs Navigation -->
+    <nav class="admin-tabs">
+      <button 
+        class="tab-btn" 
+        [class.active]="activeTab === 'articles'"
+        (click)="switchTab('articles')">
+        Articles
+      </button>
+      <button 
+        class="tab-btn" 
+        [class.active]="activeTab === 'users'"
+        (click)="switchTab('users')">
+        Utilisateurs
+      </button>
+    </nav>
+  
+    <!-- ARTICLES TAB -->
+    <section class="admin-content" *ngIf="activeTab === 'articles'">
+      <!-- Article Form -->
+      <div class="form-panel" *ngIf="isEditingArticle">
+        <h2>{{ selectedArticle ? 'Modifier l\'article' : 'Nouvel article' }}</h2>
+        <form class="admin-form">
+          <div class="form-group">
+            <label for="title">Titre *</label>
+            <input 
+              type="text" 
+              id="title" 
+              [(ngModel)]="articleForm.title" 
+              name="title"
+              placeholder="Titre de l'article" />
+          </div>
+  
+          <div class="form-group">
+            <label for="content">Contenu ou URL vidéo *</label>
+            <textarea 
+              id="content" 
+              [(ngModel)]="articleForm.content" 
+              name="content"
+              rows="6"
+              placeholder="Contenu de l'article ou URL YouTube"></textarea>
+          </div>
+  
+          <div class="form-group">
+            <label for="image">URL de l'image *</label>
+            <input 
+              type="text" 
+              id="image" 
+              [(ngModel)]="articleForm.image" 
+              name="image"
+              placeholder="https://exemple.com/image.jpg" />
+          </div>
+  
+          <div class="form-actions">
+            <button type="button" class="btn-save" (click)="saveArticle()">
+              💾 Enregistrer
+            </button>
+            <button type="button" class="btn-cancel" (click)="cancelArticleEdit()">
+              ❌ Annuler
+            </button>
+          </div>
+        </form>
+      </div>
+  
+      <!-- Articles List -->
+      <div class="list-panel">
+        <div class="panel-header">
+          <h2>Liste des articles ({{ articles.length }})</h2>
+          <button class="btn-create" (click)="createArticle()">
+            ➕ Nouvel article
+          </button>
+        </div>
+  
+        <div class="table-wrapper">
+          <table class="data-table" *ngIf="articles.length > 0">
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Titre</th>
+                <th>Type</th>
+                <th>Date de création</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let article of articles">
+                <td>
+                  <img [src]="article.image" [alt]="article.title" class="thumbnail" />
+                </td>
+                <td class="title-cell">{{ article.title }}</td>
+                <td>
+                  <span class="badge" [class.badge-video]="article.content.startsWith('http')">
+                    {{ article.content.startsWith('http') ? '🎥 Vidéo' : '📄 Article' }}
+                  </span>
+                </td>
+                <td>{{ formatDate(article.createdAt) }}</td>
+                <td class="actions-cell">
+                  <button class="btn-edit" (click)="editArticle(article)">✏️</button>
+                  <button class="btn-delete" (click)="deleteArticle(article.id)">🗑️</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+  
+          <p class="empty-state" *ngIf="articles.length === 0">
+            Aucun article pour le moment. Créez-en un !
+          </p>
+        </div>
+      </div>
+    </section>
+  
+    <!-- USERS TAB -->
+    <section class="admin-content" *ngIf="activeTab === 'users'">
+      <!-- User Form -->
+      <div class="form-panel" *ngIf="isEditingUser">
+        <h2>{{ selectedUser ? 'Modifier l\'utilisateur' : 'Nouvel utilisateur' }}</h2>
+        <form class="admin-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">Prénom *</label>
+              <input 
+                type="text" 
+                id="firstName" 
+                [(ngModel)]="userForm.firstName" 
+                name="firstName"
+                placeholder="Prénom" />
+            </div>
+  
+            <div class="form-group">
+              <label for="lastName">Nom *</label>
+              <input 
+                type="text" 
+                id="lastName" 
+                [(ngModel)]="userForm.lastName" 
+                name="lastName"
+                placeholder="Nom" />
+            </div>
+          </div>
+  
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input 
+              type="email" 
+              id="email" 
+              [(ngModel)]="userForm.email" 
+              name="email"
+              placeholder="email@exemple.com" />
+          </div>
+  
+          <div class="form-group">
+            <label for="password">
+              Mot de passe {{ selectedUser ? '(laisser vide pour ne pas modifier)' : '*' }}
+            </label>
+            <input 
+              type="password" 
+              id="password" 
+              [(ngModel)]="userForm.password" 
+              name="password"
+              placeholder="••••••••" />
+          </div>
+  
+          <div class="form-actions">
+            <button type="button" class="btn-save" (click)="saveUser()">
+              💾 Enregistrer
+            </button>
+            <button type="button" class="btn-cancel" (click)="cancelUserEdit()">
+              ❌ Annuler
+            </button>
+          </div>
+        </form>
+      </div>
+  
+      <!-- Users List -->
+      <div class="list-panel">
+        <div class="panel-header">
+          <h2>Liste des utilisateurs ({{ users.length }})</h2>
+          <button class="btn-create" (click)="createUser()">
+            ➕ Nouvel utilisateur
+          </button>
+        </div>
+  
+        <div class="table-wrapper">
+          <table class="data-table" *ngIf="users.length > 0">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Prénom</th>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of users">
+                <td>{{ user.id }}</td>
+                <td>{{ user.firstName }}</td>
+                <td>{{ user.lastName }}</td>
+                <td>{{ user.email }}</td>
+                <td class="actions-cell">
+                  <button class="btn-edit" (click)="editUser(user)">✏️</button>
+                  <button class="btn-delete" (click)="deleteUser(user.id)">🗑️</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+  
+          <p class="empty-state" *ngIf="users.length === 0">
+            Aucun utilisateur pour le moment. Créez-en un !
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>

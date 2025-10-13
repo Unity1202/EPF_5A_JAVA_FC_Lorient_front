@@ -21,6 +21,7 @@ import { LoginComponent } from "pages/login/login.component"
 import { RegisterComponent } from "pages/register/register.component"
 import { NextmatchComponent } from "pages/nextmatch/nextmatch.component"
 import { ArticlesComponent } from "pages/articles/articles.component"
+import { AdminComponent } from "pages/admin/admin.component"
 
 
 
@@ -37,7 +38,8 @@ import { ArticlesComponent } from "pages/articles/articles.component"
     LoginComponent,
     RegisterComponent,
     ArticlesComponent,
-    NextmatchComponent
+    NextmatchComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
