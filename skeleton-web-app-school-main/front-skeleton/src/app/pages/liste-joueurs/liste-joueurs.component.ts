@@ -1,8 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { forkJoin, of } from 'rxjs';
-import { catchError } from 'rxjs/operators';
-import { environment } from '../../../environments/environment';
+import { Component } from '@angular/core';
 
 interface Joueur {
   nom: string;
@@ -16,32 +12,11 @@ interface Joueur {
   templateUrl: './liste-joueurs.component.html',
   styleUrls: ['./liste-joueurs.component.scss']
 })
-export class ListeJoueursComponent implements OnInit {
-  joueurs: Joueur[] = [];
-
-  constructor(private http: HttpClient) {}
-
-  ngOnInit(): void {
-    const ids = Array.from({ length: 26 }, (_, i) => i + 1);
-    const requests = ids.map((id) =>
-      this.http
-        .get<any>(`${environment.apiBaseUrl}/players/${id}`)
-        .pipe(catchError(() => of(null)))
-    );
-
-    forkJoin(requests).subscribe((players) => {
-      const validPlayers = players.filter((p): p is any => p !== null);
-      this.joueurs = validPlayers.map((p) => ({
-        nom: `${p.firstName} ${p.lastName}`,
-        poste: this.capitalizeFirst(p.position),
-        numero: p.shirtNumber,
-        photo: p.crest,
-      }));
-    });
-  }
-
-  private capitalizeFirst(value: string | undefined): string {
-    if (!value) return '';
-    return value.charAt(0).toUpperCase() + value.slice(1);
-  }
+export class ListeJoueursComponent {
+  joueurs: Joueur[] = [
+    { nom: 'Paul Nardi', poste: 'Gardien', numero: 1, photo: 'assets/joueurs/nardi.png' },
+    { nom: 'Montassar Talbi', poste: 'Défenseur', numero: 15, photo: 'assets/joueurs/talbi.png' },
+    { nom: 'Julien Ponceau', poste: 'Milieu', numero: 21, photo: 'assets/joueurs/ponceau.png' },
+    { nom: 'Eli Kroupi', poste: 'Attaquant', numero: 9, photo: 'assets/joueurs/kroupi.png' }
+  ];
 }
