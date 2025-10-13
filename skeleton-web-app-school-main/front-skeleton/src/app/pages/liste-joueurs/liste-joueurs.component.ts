@@ -26,8 +26,10 @@ interface ApiPlayer {
 })
 export class ListeJoueursComponent implements OnInit {
   joueurs: Joueur[] = [];
-  postes: string[] = ['Tous', 'Gardien', 'Défenseur', 'Milieu', 'Attaquant'];
-  selectedPoste: string = 'Tous';
+  gardiens: Joueur[] = [];
+  defenseurs: Joueur[] = [];
+  milieux: Joueur[] = [];
+  attaquants: Joueur[] = [];
 
   constructor(private http: HttpClient) {}
 
@@ -40,18 +42,21 @@ export class ListeJoueursComponent implements OnInit {
           numero: p.shirtNumber,
           photo: p.crest
         }));
+
+        // Séparer les joueurs par poste
+        this.gardiens = this.joueurs.filter(j => j.poste === 'Gardien');
+        this.defenseurs = this.joueurs.filter(j => j.poste === 'Défenseur');
+        this.milieux = this.joueurs.filter(j => j.poste === 'Milieu');
+        this.attaquants = this.joueurs.filter(j => j.poste === 'Attaquant');
       },
       error: () => {
         this.joueurs = [];
+        this.gardiens = [];
+        this.defenseurs = [];
+        this.milieux = [];
+        this.attaquants = [];
       }
     });
-  }
-
-  get filteredJoueurs(): Joueur[] {
-    if (this.selectedPoste === 'Tous') {
-      return this.joueurs;
-    }
-    return this.joueurs.filter(j => j.poste === this.selectedPoste);
   }
 
   private formatPosition(position: string): string {
