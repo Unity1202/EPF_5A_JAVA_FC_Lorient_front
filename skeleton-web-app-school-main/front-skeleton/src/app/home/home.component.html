@@ -3,10 +3,11 @@
 <section class="carousel" >
   <div class="slides" [style.transform]="'translateX(-' + currentSlide * 100 + '%)'">
     <div class="slide" *ngFor="let article of articles">
-      <img [src]="article.image" [alt]="article.titre" />
+      <img [src]="article.image" [alt]="article.title" />
       <div class="caption">
-        <h2>{{ article.titre }}</h2>
-        <p>{{ article.resume }}</p>
+        <h2>{{ article.title }}</h2>
+        <p *ngIf="!article.content.startsWith('http')">{{ article.content.split(' ').slice(0, 5).join(' ') }}...</p>
+        <p *ngIf="article.content.startsWith('http')">Voir notre vidéo...</p>
       </div>
     </div>
   </div>
@@ -19,25 +20,26 @@
   <div class="matchs-container" routerLink="/matchs">
     <h2>Prochain Match</h2>
 
-    <div class="match-list" *ngIf="matchsAVenir && matchsAVenir.length > 0">
+    <div class="match-list" *ngIf="matchsAVenir.length > 0">
       <div class="match-card">
-        <p class="date">{{ matchsAVenir[0].date | date: 'd MMMM yyyy' }}</p>
+        <p class="date">{{ matchsAVenir[0].utcDate | date: 'd MMMM yyyy' }}</p>
         <div class="teams">
           <div class="team">
-            <img src="assets/Logo.png" alt="logo domicile" />
+            <img [src]="matchsAVenir[0].domicileLogo" alt="logo domicile" />
             <span class="domicile">{{ matchsAVenir[0].domicile }}</span>
           </div>
-
+    
           <span class="vs">VS</span>
-
+    
           <div class="team">
             <span class="exterieur">{{ matchsAVenir[0].exterieur }}</span>
-            <img src="assets/Logo.png" alt="logo extérieur" />
+            <img [src]="matchsAVenir[0].exterieurLogo" alt="logo extérieur" />
           </div>
         </div>
         <p class="lieu">{{ matchsAVenir[0].lieu }}</p>
       </div>
     </div>
+    
 
     <div class="match-list" *ngIf="!matchsAVenir || matchsAVenir.length === 0">
       <p>Aucun match à venir n'est programmé pour le moment.</p>
@@ -48,7 +50,7 @@
 
 <section class="classement-ligue1">
   <h2>Notre classement</h2>
-  <div class="table-container">
+  <div class="table-container" *ngIf="teams && teams.length > 0; else noTeams">
     <table class="classement-table">
       <thead>
         <tr>
@@ -64,21 +66,27 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let club of getFocusedClassement" [class.is-lorient]="club.club === 'FC Lorient'">
-          <td>{{ club.pos }}</td>
-          <td><img src="assets/Logo.png" alt="logo" /></td>
-          <td>{{ club.club }}</td>
-          <td>{{ club.pts }}</td>
-          <td>{{ club.j }}</td>
-          <td>{{ club.g }}</td>
-          <td>{{ club.n }}</td>
-          <td>{{ club.p }}</td>
-          <td>{{ club.diff }}</td>
+        <!-- On affiche les équipes triées par leur classement -->
+        <tr *ngFor="let team of getFocusedTeams()" [class.is-lorient]="team.name === 'FC Lorient'">
+          <td>{{ team.rank }}</td>
+          <td><img [src]="team.crest" [alt]="team.shortName" height="30" /></td>
+          <td>{{ team.name }}</td>
+          <td>{{ team.points }}</td>
+          <td>{{ team.played }}</td>
+          <td>{{ team.won }}</td>
+          <td>{{ team.drawn }}</td>
+          <td>{{ team.lost }}</td>
+          <td>{{ team.diff > 0 ? '+' + team.diff : team.diff }}</td>
         </tr>
       </tbody>
     </table>
   </div>
+
+  <ng-template #noTeams>
+    <p>Aucune donnée de classement disponible pour le moment.</p>
+  </ng-template>
 </section>
+
 
 
 
@@ -86,10 +94,11 @@
   <h2>Derniers articles</h2>
   <div class="articles-grid">
     <div class="article-card" *ngFor="let article of paginatedArticles">
-      <img [src]="article.image" [alt]="article.titre" />
+      <img [src]="article.image" [alt]="article.title" />
       <div class="article-info">
-        <h3>{{ article.titre }}</h3>
-        <p>{{ article.resume }}</p>
+        <h3>{{ article.title }}</h3>
+        <p *ngIf="!article.content.startsWith('http')">{{ article.content.split(' ').slice(0, 5).join(' ') }}...</p>
+        <p *ngIf="article.content.startsWith('http')">Voir notre vidéo...</p>
       </div>
     </div>
   </div>
