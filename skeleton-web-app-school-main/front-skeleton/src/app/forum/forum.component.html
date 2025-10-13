@@ -7,10 +7,10 @@
       <ul class="message-list">
         <li *ngFor="let m of messages" class="message-item">
           <div class="meta">
-            <strong>{{ m.author }}</strong>
+            <strong>User #{{ m.userId }}</strong>
             <span class="date">{{ m.createdAt | date:'short' }}</span>
           </div>
-          <div class="content">{{ m.content }}</div>
+          <div class="content">{{ m.message }}</div>
         </li>
       </ul>
     </div>
@@ -19,16 +19,16 @@
       <h2>Nouveau message</h2>
       <form (ngSubmit)="sendMessage()" class="message-form">
         <input
-          type="text"
-          placeholder="Votre nom"
-          [(ngModel)]="author"
-          name="author"
+          type="number"
+          placeholder="Votre userId"
+          [(ngModel)]="userId"
+          name="userId"
           required
         />
         <textarea
           placeholder="Votre message"
-          [(ngModel)]="content"
-          name="content"
+          [(ngModel)]="message"
+          name="message"
           rows="6"
           required
         ></textarea>
@@ -36,7 +36,7 @@
           mat-raised-button
           type="submit"
           class="send-button"
-          [disabled]="!author?.trim() || !content?.trim()"
+          [disabled]="!userId || !message?.trim()"
           aria-label="Envoyer le message"
         >
           <mat-icon>send</mat-icon>

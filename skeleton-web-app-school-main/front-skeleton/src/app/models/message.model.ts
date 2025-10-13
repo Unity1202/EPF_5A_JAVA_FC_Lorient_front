@@ -1,7 +1,7 @@
-export interface Message {
+export interface ForumMessage {
   id?: number
-  author: string
-  content: string
+  userId: number
+  message: string
   createdAt?: string
 }
 

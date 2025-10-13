@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiBaseUrl: "",
+  apiBaseUrl: "https://example.com", // set appropriate prod URL if available
 };

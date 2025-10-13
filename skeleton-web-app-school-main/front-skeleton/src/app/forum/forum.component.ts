@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { ForumService } from "../services/forum.service";
-import { Message } from "../models/message.model";
+import { ForumMessage } from "../models/message.model";
  
 
 @Component({
@@ -9,9 +9,9 @@ import { Message } from "../models/message.model";
   styleUrls: ["./forum.component.scss"],
 })
 export class ForumComponent {
-  messages: Message[] = []
-  author: string = ""
-  content: string = ""
+  messages: ForumMessage[] = []
+  userId: number | null = null
+  message: string = ""
  
 
   constructor(private forumService: ForumService) {}
@@ -28,14 +28,14 @@ export class ForumComponent {
  
 
   sendMessage(): void {
-    const trimmedContent = this.content.trim()
-    const trimmedAuthor = this.author.trim()
-    if (!trimmedAuthor || !trimmedContent) return
+    const uid = this.userId ?? 0
+    const msg = this.message.trim()
+    if (!uid || !msg) return
 
     this.forumService
-      .postMessage({ author: trimmedAuthor, content: trimmedContent })
+      .postMessage({ userId: uid, message: msg })
       .subscribe(() => {
-        this.content = ""
+        this.message = ""
         this.loadMessages()
       })
   }
