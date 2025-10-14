@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { ForumService } from "../services/forum.service";
-import { Message } from "../models/message.model";
+import { Forum } from "../models/message.model";
  
 
 @Component({
@@ -9,9 +9,9 @@ import { Message } from "../models/message.model";
   styleUrls: ["./forum.component.scss"],
 })
 export class ForumComponent {
-  messages: Message[] = []
-  author: string = ""
-  content: string = ""
+  messages: Forum[] = []
+  userId: number | null = null
+  message: string = ""
  
 
   constructor(private forumService: ForumService) {}
@@ -21,22 +21,31 @@ export class ForumComponent {
   }
 
   loadMessages(): void {
-    this.forumService.getMessages().subscribe((msgs) => {
+    this.forumService.getForums().subscribe((msgs) => {
       this.messages = msgs
     })
   }
  
 
   sendMessage(): void {
-    const trimmedContent = this.content.trim()
-    const trimmedAuthor = this.author.trim()
-    if (!trimmedAuthor || !trimmedContent) return
-
+    const trimmedMessage = this.message.trim()
+    if (this.userId == null || !trimmedMessage) return
+    const numericUserId = Number(this.userId)
+    if (!Number.isFinite(numericUserId) || numericUserId <= 0) {
+      alert('Echec envoi: userId invalide')
+      return
+    }
     this.forumService
-      .postMessage({ author: trimmedAuthor, content: trimmedContent })
-      .subscribe(() => {
-        this.content = ""
-        this.loadMessages()
+      .createForum({ userId: numericUserId, message: trimmedMessage })
+      .subscribe({
+        next: () => {
+          this.message = ""
+          this.loadMessages()
+        },
+        error: (err) => {
+          const msg = (err && err.error) ? err.error : 'Erreur inconnue'
+          alert(`Echec envoi: ${msg}`)
+        }
       })
   }
 }
