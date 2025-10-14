@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router'; // Ajout de Router
 
 interface Produit {
   id: number;
@@ -8,7 +9,6 @@ interface Produit {
   image: string;
   price: number;
 }
-
 
 @Component({
   selector: 'app-boutique',
@@ -19,7 +19,7 @@ interface Produit {
 export class BoutiqueComponent implements OnInit {
   produits: Produit[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {} // Ajout de Router dans le constructeur
 
   ngOnInit(): void {
     this.fetchProduits();
@@ -31,5 +31,10 @@ export class BoutiqueComponent implements OnInit {
       this.produits = data;
     });
   }
+
+  goToArticle(): void { // Nouvelle fonction
+    window.open(`https://boutique.fclorient.bzh/fr/`);
+  }
+  
   
 }

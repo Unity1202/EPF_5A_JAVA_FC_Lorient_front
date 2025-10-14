@@ -1,36 +1,52 @@
+/* ===== GLOBAL ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   scroll-snap-type: y mandatory; 
-  overflow-y: scroll;
-  height: 100vh; /* Le conteneur doit avoir une hauteur définie */
+  overflow-y: auto; /* Changé de scroll à auto */
+  height: 100vh;
   font-family: "Konsole", sans-serif;
   
   background-image: url('/assets/bg.jpg'); 
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
+  
+  /* FIX: Empêche le scroll horizontal */
+  overflow-x: hidden;
+  width: 100%;
 }
-
 
 /* ===== Carousel ===== */
 .carousel {
   position: relative;
-  width: 100vw;
+  width: 100%; /* Changé de 100vw à 100% */
   height: 85vh;
-
   scroll-snap-align: start;
   scroll-snap-stop: always;
+  overflow: hidden; /* Ajouté pour empêcher le débordement */
 }
 
 .slides {
   display: flex;
   transition: transform 0.5s ease-in-out;
   height: 100%;
+  width: 100%; /* Ajouté */
 }
 
 .slide {
   min-width: 100%;
   position: relative;
   height: 100%;
+  flex-shrink: 0; /* Ajouté pour éviter le rétrécissement */
 }
 
 .slide img {
@@ -98,7 +114,7 @@ body {
     height: 300px; 
   }
   
-  .caption  {
+  .caption {
     left: 20px;
     right: 20px;
     bottom: 20px;
@@ -123,22 +139,23 @@ body {
 
 /* ===== Matchs à venir ===== */
 .matchs {
-
   scroll-snap-align: start;
   min-height: 100vh;
+  width: 100%; /* Ajouté */
   
   display: flex;
-  flex-direction: column; /* Ajouté pour centrer correctement le contenu verticalement */
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   font-family: "konsole", sans-serif;
   color: black;
   text-align: center;
-  padding: 40px 0; /* Ajout d'un padding pour l'esthétique si min-height 100vh est utilisé */
+  padding: 40px 20px; /* Ajouté padding horizontal */
 }
 
 .matchs-container {
-  width: 70%;
+  width: 90%; /* Changé de 70% à 90% pour mieux s'adapter */
+  max-width: 1200px; /* Ajouté une largeur max */
   cursor: pointer;
   transition: transform 0.3s ease;
   
@@ -178,7 +195,8 @@ body {
   border: 2px solid #ff6600;
   border-radius: 5px;
   padding: 25px 30px;
-  width: 60%;
+  width: 100%; /* Changé de 60% à 100% */
+  max-width: 800px; /* Ajouté une largeur max */
   margin: 0 auto;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -237,35 +255,13 @@ body {
   color: #555;
 }
 
-
-/* Flèches (Ces styles étaient dupliqués, je les laisse pour ne pas rompre la logique) */
-.prev, .next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0,0,0,0.4);
-  border: none;
-  color: white;
-  font-size: 2rem;
-  cursor: pointer;
-  padding: 10px;
-  border-radius: 50%;
-}
-.prev { left: 15px; }
-.next { right: 15px; }
-
-.prev:hover, .next:hover {
-  background: rgba(0,0,0,0.7);
-}
-
-
 /* ===== Articles ===== */
 .articles-section {
-  /* FIX: Assure le snap et donne une hauteur minimum */
   scroll-snap-align: start;
   min-height: 100vh;
+  width: 100%; /* Ajouté */
   
-  padding: 40px;
+  padding: 40px 20px; /* Ajouté padding horizontal */
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -302,6 +298,10 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
   gap: 20px;
   margin-top: 20px;
+  max-width: 1400px; /* Ajouté */
+  margin-left: auto; /* Ajouté */
+  margin-right: auto; /* Ajouté */
+  width: 100%; /* Ajouté */
 }
 
 .article-card {
@@ -313,6 +313,7 @@ body {
   font-weight: bold;
   background-color: #fffaf5;
   cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Ajouté */
 
   &:hover {
     transform: translateY(-8px);
@@ -324,16 +325,16 @@ body {
   width: 100%;
   height: auto;
   object-fit: cover;
-  
-  &:hover img {
-    transform: scale(1.05);
-  }
+  transition: transform 0.3s ease; /* Déplacé ici */
+}
+
+.article-card:hover img {
+  transform: scale(1.05);
 }
 
 .article-info {
   padding: 15px;
 }
-
 
 /* Pagination */
 .pagination {
@@ -367,16 +368,14 @@ body {
 
 /* ===== Footer ===== */
 .footer {
-  /* FIX: Assure le snap */
   scroll-snap-align: start;
-  /* La hauteur minimale aide le snap final */
   min-height: 50vh; 
+  width: 100%; /* Ajouté */
   
   background-color: rgba(0,0,0,0.85);
   color: #fff;
   font-family: "Konsole", sans-serif;
   padding: 40px 20px;
-  width: 100%;
   box-sizing: border-box;
 
   .footer-container {
@@ -454,14 +453,11 @@ body {
   }
 }
 
-
-
-
 /* Style pour le tableau de classement */
 .classement-ligue1 {
-  /* FIX: Assure le snap et donne une hauteur minimum */
   scroll-snap-align: start;
   min-height: 100vh;
+  width: 100%; /* Ajouté */
   
   margin-top: 40px;
   text-align: center;
@@ -470,7 +466,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 40px 0;
+  padding: 40px 20px; /* Ajouté padding horizontal */
 }
 
 .classement-ligue1 h2 {
@@ -500,10 +496,13 @@ body {
 .table-container {
   display: flex;
   justify-content: center;
+  width: 100%; /* Ajouté */
+  overflow-x: auto; /* Ajouté pour le scroll horizontal sur mobile */
 }
 
 .classement-table {
-  width: 85%;
+  width: 90%; /* Changé de 85% à 90% */
+  max-width: 1200px; /* Ajouté */
   border-collapse: collapse;
   border-radius: 5px;
   overflow: hidden;
@@ -548,4 +547,33 @@ body {
 
 .classement-table img:hover {
   transform: scale(1.1);
+}
+
+/* Responsive pour petits écrans */
+@media (max-width: 768px) {
+  .teams {
+    gap: 20px;
+  }
+
+  .team {
+    font-size: 1em;
+  }
+
+  .team img {
+    height: 35px;
+  }
+
+  .articles-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .classement-table {
+    width: 100%;
+    font-size: 0.9em;
+  }
+
+  .classement-table th,
+  .classement-table td {
+    padding: 8px 4px;
+  }
 }

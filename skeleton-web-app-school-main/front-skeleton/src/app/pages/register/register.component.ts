@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {}
 
   registerUser(): void {
-    if (this.isFormValid()) { // Vérifier si le formulaire est valide
+    if (this.isFormValid()) { 
       const apiUrl = `http://localhost:8080/users`; 
       this.http.post(apiUrl, this.user).subscribe({
         next: (response) => {

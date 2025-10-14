@@ -7,7 +7,7 @@
         <h3>{{ p.name }}</h3>
         <p class="description">{{ p.description }}</p>
         <p class="prix">{{ p.price | currency:'EUR' }}</p>
-        <button>Ajouter au panier</button>
+        <button (click)="goToArticle()">Aller à l'article</button>
       </div>
     </div>
   </section>

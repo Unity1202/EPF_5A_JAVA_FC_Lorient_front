@@ -1,0 +1,107 @@
+<body>
+    <div class="joueur-detail-container">
+      <!-- Loading State -->
+      <div class="loading" *ngIf="loading">
+        <div class="spinner"></div>
+        <p>Chargement des informations...</p>
+      </div>
+  
+      <!-- Error State -->
+      <div class="error" *ngIf="errorMessage && !loading">
+        <h2>❌ Erreur</h2>
+        <p>{{ errorMessage }}</p>
+        <a routerLink="/equipe" class="btn-back">Retour à l'équipe</a>
+      </div>
+  
+      <!-- Joueur Details -->
+      <div class="joueur-detail" *ngIf="joueur && !loading">
+        <a routerLink="/equipe" class="back-link">
+          <span>←</span> Retour à l'équipe
+        </a>
+  
+        <div class="joueur-header">
+          <div class="photo-section">
+            <div class="photo-wrapper">
+              <img [src]="joueur.photo" [alt]="joueur.prenom + ' ' + joueur.nom">
+            </div>
+            <div class="numero-badge">{{ joueur.numero }}</div>
+          </div>
+  
+          <div class="info-section">
+            <div class="name-container">
+              <h1 class="prenom">{{ joueur.prenom }}</h1>
+              <h1 class="nom">{{ joueur.nom }}</h1>
+            </div>
+            
+            <div class="meta-info">
+              <span class="poste">{{ joueur.poste }}</span>
+              <div class="flag-container" *ngIf="joueur.flag">
+                <img [src]="joueur.flag" alt="Drapeau" class="flag">
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="bio-section">
+          <h2>Biographie</h2>
+          <div class="bio-content">
+            <p>{{ bio }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  
+  <footer class="footer">
+    <div class="footer-container">
+      <!-- Bloc club -->
+      <div class="footer-section">
+        <h3>FC Lorient</h3>
+        <p>Stade du Moustoir</p>
+        <p>Rue du Moustoir, 56100 Lorient, France</p>
+        <p>Tél : +33 2 97 00 00 00</p>
+      </div>
+  
+      <!-- Bloc liens utiles -->
+      <div class="footer-section">
+        <h3>Liens utiles</h3>
+        <ul>
+          <li><a routerLink="">Accueil</a></li>
+          <li><a routerLink="/boutique">Boutique</a></li>
+          <li><a routerLink="/equipe">Joueurs</a></li>
+          <li><a href="#">Classement</a></li>
+          <li><a href="#">Prochain match</a></li>
+        </ul>
+      </div>
+  
+      <!-- Bloc mentions légales -->
+      <div class="footer-section">
+        <h3>Mentions légales</h3>
+        <ul>
+          <li><a href="#">Politique de confidentialité</a></li>
+          <li><a href="#">Conditions d'utilisation</a></li>
+          <li><a href="#">Cookies</a></li>
+        </ul>
+      </div>
+  
+      <!-- Bloc réseaux sociaux -->
+      <div class="footer-section">
+        <h3>Suivez-nous</h3>
+        <div class="socials">
+          <a href="https://twitter.com/FCLorient" target="_blank">
+            <img src="assets/rs/twitter.png" alt="Twitter" height="28px" width="28px"/>
+          </a>
+          <a href="https://www.instagram.com/fclorient/" target="_blank">
+            <img src="assets/rs/insta.png" alt="Instagram" height="28px" width="28px"/>
+          </a>
+          <a href="https://www.facebook.com/FCLorient" target="_blank">
+            <img src="assets/rs/facebook.png" alt="Facebook" height="28px" width="28px"/>
+          </a>
+        </div>
+      </div>
+    </div>
+  
+    <div class="footer-bottom">
+      <p>&copy; 2025 FC Lorient. Tous droits réservés.</p>
+    </div>
+  </footer>

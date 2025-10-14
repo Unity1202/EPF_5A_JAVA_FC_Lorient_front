@@ -23,6 +23,7 @@ import { NextmatchComponent } from "pages/nextmatch/nextmatch.component"
 import { ArticlesComponent } from "pages/articles/articles.component"
 import { AdminComponent } from "pages/admin/admin.component"
 import { AuthService } from "auth-service.service"
+import { JoueursComponent } from "pages/joueurs/joueurs.component"
 
 
 
@@ -40,7 +41,8 @@ import { AuthService } from "auth-service.service"
     RegisterComponent,
     ArticlesComponent,
     NextmatchComponent,
-    AdminComponent
+    AdminComponent,
+    JoueursComponent
   ],
   imports: [
     BrowserModule,

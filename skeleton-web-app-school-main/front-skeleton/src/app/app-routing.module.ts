@@ -10,6 +10,7 @@ import { RegisterComponent } from "pages/register/register.component"
 import { NextmatchComponent } from "pages/nextmatch/nextmatch.component"
 import { Article, ArticlesComponent } from './pages/articles/articles.component';
 import { AdminComponent } from "pages/admin/admin.component"
+import { JoueursComponent } from "pages/joueurs/joueurs.component"
 
 
 
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: "matchs", component: NextmatchComponent},
   { path: "article/:id", component: ArticlesComponent},
   { path: "admin", component: AdminComponent},
+  { path: "joueurs/:id", component: JoueursComponent },
   { path: "**", redirectTo: "", pathMatch: "full" },
 
   

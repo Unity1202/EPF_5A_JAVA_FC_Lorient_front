@@ -8,7 +8,7 @@
       <div class="poste-section" *ngIf="gardiens.length > 0">
         <h3 class="poste-title">Gardiens</h3>
         <div class="joueurs-grid">
-          <div class="joueur-card" *ngFor="let j of gardiens">
+          <div class="joueur-card" *ngFor="let j of gardiens" [routerLink]="['/joueurs', j.id]">
             <div class="photo-container">
               <img [src]="j.photo" alt="{{ j.nom }}">
             </div>
@@ -17,7 +17,7 @@
                 <h4>{{ j.nom }}</h4>
                 <span class="numero">{{ j.numero }}</span>
               </div>
-              <p class="poste">{{ j.poste }}</p>
+              <p class="flag"><img [src]="j.flag" alt="Drapeau" width="30" height="20" /></p>
             </div>
           </div>
         </div>
@@ -27,7 +27,7 @@
       <div class="poste-section" *ngIf="defenseurs.length > 0">
         <h3 class="poste-title">Défenseurs</h3>
         <div class="joueurs-grid">
-          <div class="joueur-card" *ngFor="let j of defenseurs">
+          <div class="joueur-card" *ngFor="let j of defenseurs" [routerLink]="['/joueurs', j.id]">
             <div class="photo-container">
               <img [src]="j.photo" alt="{{ j.nom }}">
             </div>
@@ -36,7 +36,7 @@
                 <h4>{{ j.nom }}</h4>
                 <span class="numero">{{ j.numero }}</span>
               </div>
-              <p class="poste">{{ j.poste }}</p>
+              <p class="flag"><img [src]="j.flag" alt="Drapeau" width="30" height="20" /></p>
             </div>
           </div>
         </div>
@@ -46,7 +46,7 @@
       <div class="poste-section" *ngIf="milieux.length > 0">
         <h3 class="poste-title">Milieux</h3>
         <div class="joueurs-grid">
-          <div class="joueur-card" *ngFor="let j of milieux">
+          <div class="joueur-card" *ngFor="let j of milieux" [routerLink]="['/joueurs', j.id]">
             <div class="photo-container">
               <img [src]="j.photo" alt="{{ j.nom }}">
             </div>
@@ -55,7 +55,7 @@
                 <h4>{{ j.nom }}</h4>
                 <span class="numero">{{ j.numero }}</span>
               </div>
-              <p class="poste">{{ j.poste }}</p>
+              <p class="flag"><img [src]="j.flag" alt="Drapeau" width="30" height="20" /></p>
             </div>
           </div>
         </div>
@@ -65,7 +65,7 @@
       <div class="poste-section" *ngIf="attaquants.length > 0">
         <h3 class="poste-title">Attaquants</h3>
         <div class="joueurs-grid">
-          <div class="joueur-card" *ngFor="let j of attaquants">
+          <div class="joueur-card" *ngFor="let j of attaquants" [routerLink]="['/joueurs', j.id]">
             <div class="photo-container">
               <img [src]="j.photo" alt="{{ j.nom }}">
             </div>
@@ -74,7 +74,7 @@
                 <h4>{{ j.nom }}</h4>
                 <span class="numero">{{ j.numero }}</span>
               </div>
-              <p class="poste">{{ j.poste }}</p>
+              <p class="flag"><img [src]="j.flag" alt="Drapeau" width="30" height="20" /></p>
             </div>
           </div>
         </div>
