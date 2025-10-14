@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { environment } from "../../environments/environment";
-import { Message } from "../models/message.model";
+import { Forum } from "../models/message.model";
 
 @Injectable({ providedIn: "root" })
 export class ForumService {
@@ -10,12 +10,12 @@ export class ForumService {
 
   constructor(private http: HttpClient) {}
 
-  getMessages(): Observable<Message[]> {
-    return this.http.get<Message[]>(`${this.baseUrl}/api/messages`);
+  getForums(): Observable<Forum[]> {
+    return this.http.get<Forum[]>(`${this.baseUrl}/forums`);
   }
 
-  postMessage(payload: { author: string; content: string }): Observable<Message> {
-    return this.http.post<Message>(`${this.baseUrl}/api/messages`, payload);
+  createForum(payload: { userId: number; message: string }): Observable<Forum> {
+    return this.http.post<Forum>(`${this.baseUrl}/forums`, payload);
   }
 }
 
