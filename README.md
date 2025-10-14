@@ -37,47 +37,49 @@ http://localhost:4200/
 
 ## Ce qui a été fait
 
-### Architecture et structure
-- **application angular 17** avec routing complet
-- **architecture modulaire** avec composants séparés par fonctionnalité
-- **services angular** pour la communication avec l'api backend
-- **modèles typescript** pour la gestion des données (message, student, course)
-- **intégration bootstrap et angular material** pour l'interface utilisateur
+### Pages principales développées
 
-### Pages et composants développés
-- **page d'accueil** (`home.component`) avec :
-  - carousel d'articles avec navigation
-  - section prochain match avec données dynamiques
-  - tableau de classement ligue 1
-  - grille d'articles avec pagination
-  - footer complet avec liens et réseaux sociaux
-- **navbar** (`navbar.component`) avec navigation et logo fc lorient
-- **forum** (`forum.component`) avec :
-  - affichage des messages existants
-  - formulaire d'ajout de nouveau message
-  - intégration avec l'api backend
-- **boutique** (`boutique.component`) avec grille de produits
-- **liste des joueurs** (`liste-joueurs.component`)
-- **page à propos** (`a-propos.component`)
-- **authentification** :
-  - page de connexion (`login.component`)
-  - page d'inscription (`register.component`)
-- **prochains matchs** (`nextmatch.component`)
+#### 🏠 Page d'accueil (`/`)
+- **carousel d'actualités** avec navigation automatique et manuelle
+- **section prochain match** avec affichage dynamique des matchs à venir
+- **tableau de classement ligue 1** avec mise en évidence du fc lorient
+- **grille d'actualités** avec pagination pour les derniers articles
+- **footer complet** avec liens utiles et réseaux sociaux
 
-### Fonctionnalités techniques
-- **routing angular** avec navigation entre toutes les pages
-- **services http** pour communication avec l'api backend
-- **gestion des formulaires** avec validation
-- **pagination** pour l'affichage des articles
-- **carousel interactif** pour les articles en vedette
-- **responsive design** avec bootstrap
-- **icônes material design** pour l'interface
+#### ⚽ Équipe (`/equipe`)
+- **grille des joueurs** avec photos, noms, postes et numéros
+- **affichage visuel** des informations de l'effectif
 
-### Assets et ressources
-- **logo fc lorient** et images du club
-- **images d'articles** thématiques (tactique, entraînement, histoire, etc.)
-- **icônes réseaux sociaux** (facebook, instagram, twitter)
-- **images de fond** et éléments visuels
+#### 📅 Matchs (`/matchs`)
+- **prochain match** avec détails complets (date, équipes, lieu)
+- **matchs à venir** avec grille d'affichage
+- **matchs précédents** avec scores et résultats
+- **boutons de réservation** pour la billeterie
 
-### Documentation
-- **README complet** avec instructions d'installation et tâches effectuées
+#### 🛒 Boutique (`/boutique`)
+- **grille de produits** avec images, descriptions et prix
+- **boutons d'ajout au panier** pour chaque produit
+
+#### 💬 Forum (`/forum`)
+- **affichage des messages** existants avec auteur et date
+- **formulaire d'ajout** de nouveaux messages
+- **interface utilisateur** intuitive avec validation des champs
+- **intégration backend** pour la persistance des données
+
+#### ℹ️ À propos (`/infos`)
+- **présentation du club** avec historique et informations clés
+- **données du fc lorient** : fondation, stade, couleurs
+- **liens vers les réseaux sociaux** et site officiel
+- **section informations pratiques** sur le club
+
+#### 🔐 Authentification
+- **page de connexion** (`/login`) avec validation des champs
+- **page d'inscription** (`/register`) avec formulaire complet
+- **2 types de compte** (admin et utilisateur)
+- identifiant admin : admin@football.fr
+- mot de passe admin : admin123
+
+#### 👮​ Admin (`/admin`)
+- **panel admin** complet avec interface claire et intuitive
+- **gestion des actualités** avec ajout, modification et suppression
+- **gestion des utilisateurs** avec ajout, modification et suppression
