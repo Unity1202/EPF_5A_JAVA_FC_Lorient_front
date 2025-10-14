@@ -127,6 +127,14 @@ button.mat-raised-button {
 .message-list {
   list-style: none;
   padding: 0;
+  
+  // alternating row colors: light orange and slightly darker orange
+  li.message-item:nth-child(odd) {
+    background: #fff3e6; // very light orange
+  }
+  li.message-item:nth-child(even) {
+    background: #ffe0c2; // a bit darker orange
+  }
 }
 
 .chat-widget { display: none; }
@@ -137,7 +145,7 @@ button.mat-raised-button {
   border-radius: 10px;
   padding: 0.9rem 1rem;
   margin-bottom: 0.9rem;
-  background: #ffffff;
+  background: #ffffff; // default, overridden by nth-child above
 }
 
 .meta {
