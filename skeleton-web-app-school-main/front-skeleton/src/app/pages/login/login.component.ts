@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'auth-service.service';
+import { Router } from '@angular/router';
 
 
 export interface User{
@@ -19,21 +20,24 @@ export class LoginComponent {
   user: User = { id: '', firstName: '', lastName: '', email: '', password: '' };
   loginFailed: boolean = false;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService
+    , private router: Router
+  ) {}
 
   onLogin() {
     if (this.isFormValid()) {
       this.authService.login(this.user.email, this.user.password).subscribe(
-        (success) => {
-          if (success) {
-            console.log('Connexion réussie');
+        (role) => {
+          if (role === 'user') {
+            this.router.navigate(['/home']);
+          } else if (role === 'admin') {
+            this.router.navigate(['/admin']);
           } else {
             this.loginFailed = true;
-            console.log('Échec de la connexion');
           }
         },
         (error) => {
-          console.error('Erreur lors de la connexion', error);
+          console.error('Erreur lors de la connexion:', error);
           this.loginFailed = true;
         }
       );
@@ -43,7 +47,7 @@ export class LoginComponent {
   }
 
   isFormValid(): boolean {
-    return true; // Toujours valide pour l'instant
+    return true; 
   }
 
   
