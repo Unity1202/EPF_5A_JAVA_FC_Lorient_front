@@ -101,8 +101,12 @@
 }
 
 button.mat-raised-button {
-  background: #ff6600;
+  background: #ff6600 !important;
   color: #ffffff !important;
+  
+  .mat-button-wrapper {
+    color: #ffffff !important;
+  }
 }
 
 .send-button {
@@ -172,8 +176,28 @@ button.mat-raised-button {
 }
 
 .login-button {
-  background: #ff6600;
+  background: #ff6600 !important;
   color: #ffffff !important;
+  border: none !important;
+  padding: 12px 24px !important;
+  font-size: 1rem !important;
+  font-weight: bold !important;
+  border-radius: 6px !important;
+  transition: all 0.2s ease-in-out !important;
+  
+  ::ng-deep .mat-button-wrapper {
+    color: #ffffff !important;
+  }
+  
+  &:hover {
+    background: #ff8800 !important;
+    box-shadow: 0 4px 12px rgba(255, 102, 0, 0.4) !important;
+    transform: translateY(-1px);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
 }
 
 

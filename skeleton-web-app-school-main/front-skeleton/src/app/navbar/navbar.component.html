@@ -7,10 +7,20 @@
     <li><a routerLink="/boutique">Boutique</a></li>
     <li><a routerLink="/equipe">Équipe</a></li>
     <li><a routerLink="/infos">Infos</a></li>
-    <!-- NOUVEAU: Lien de Connexion -->
-    <li class="login-link">
-      <a routerLink="/login">
+    <!-- État de connexion -->
+    <li class="auth-section" *ngIf="isLoggedIn">
+      <div class="user-info">
+        <mat-icon class="user-icon">person</mat-icon>
+        <span class="user-name">{{ currentUser?.firstName || 'Utilisateur' }}</span>
+        <button class="logout-btn" (click)="logout()" mat-icon-button title="Se déconnecter">
+          <mat-icon>exit_to_app</mat-icon>
+        </button>
+      </div>
+    </li>
+    <li class="login-link" *ngIf="!isLoggedIn">
+      <a routerLink="/login" class="login-link-text">
         <mat-icon>person_outline</mat-icon>
+        <span>Connexion</span>
       </a>
     </li>
   </ul>

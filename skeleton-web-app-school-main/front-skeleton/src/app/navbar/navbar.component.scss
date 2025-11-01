@@ -43,6 +43,15 @@
   list-style: none;
   display: flex;
   gap: 30px;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  display: flex;
+  align-items: center;
+  height: 100%;
 }
 
 .nav-links a {
@@ -54,6 +63,104 @@
   padding: 8px 12px;
   border-radius: 4px;
   transition: all 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+
+  &:hover {
+    color: #ff6600;
+    background-color: rgba(255,102,0,0.1);
+  }
+}
+
+/* Section d'authentification */
+.auth-section {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  background-color: rgba(255, 102, 0, 0.15);
+  border: 1px solid rgba(255, 102, 0, 0.3);
+  height: fit-content;
+}
+
+.user-icon {
+  color: #ff6600;
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+  line-height: 1;
+}
+
+.user-name {
+  color: #ff6600;
+  font-family: "Konsole", sans-serif;
+  font-weight: bold;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.logout-btn {
+  color: white;
+  padding: 0;
+  min-width: auto;
+  width: 24px;
+  height: 24px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  mat-icon {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+    line-height: 1;
+  }
+
+  &:hover {
+    color: #ff6600;
+    background-color: rgba(255, 102, 0, 0.2);
+  }
+}
+
+.login-link {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.login-link-text {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: white;
+  text-decoration: none;
+  font-family: "Konsole", sans-serif;
+  font-weight: bold;
+  font-size: 1.1rem;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: all 0.2s ease-in-out;
+  white-space: nowrap;
+
+  mat-icon {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+    line-height: 1;
+  }
+
+  span {
+    line-height: 1;
+  }
 
   &:hover {
     color: #ff6600;
@@ -74,5 +181,17 @@
     gap: 15px;
     width: 100%;
     align-items: center;
+  }
+
+  .user-info {
+    flex-direction: column;
+    gap: 6px;
+    padding: 10px;
+    width: 100%;
+  }
+
+  .login-link-text {
+    justify-content: center;
+    width: 100%;
   }
 }
