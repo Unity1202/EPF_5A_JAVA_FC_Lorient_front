@@ -11,6 +11,7 @@ import { NextmatchComponent } from "pages/nextmatch/nextmatch.component"
 import { Article, ArticlesComponent } from './pages/articles/articles.component';
 import { AdminComponent } from "pages/admin/admin.component"
 import { JoueursComponent } from "pages/joueurs/joueurs.component"
+import { AdminGuard } from "./guards/admin.guard"
 
 
 
@@ -24,7 +25,7 @@ const routes: Routes = [
   { path: "register", component: RegisterComponent},
   { path: "matchs", component: NextmatchComponent},
   { path: "article/:id", component: ArticlesComponent},
-  { path: "admin", component: AdminComponent},
+  { path: "admin", component: AdminComponent, canActivate: [AdminGuard]},
   { path: "joueurs/:id", component: JoueursComponent },
   { path: "**", redirectTo: "", pathMatch: "full" },
 

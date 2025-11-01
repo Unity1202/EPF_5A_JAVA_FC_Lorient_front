@@ -160,4 +160,20 @@ button.mat-raised-button {
   white-space: pre-wrap;
 }
 
+.login-prompt {
+  text-align: center;
+  padding: 2rem;
+  color: rgba(255, 255, 255, 0.8);
+  
+  p {
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+.login-button {
+  background: #ff6600;
+  color: #ffffff !important;
+}
+
 

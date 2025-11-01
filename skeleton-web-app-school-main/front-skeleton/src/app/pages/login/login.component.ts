@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'auth-service.service';
+import { AuthService, LoginResponse } from 'auth-service.service';
 import { Router } from '@angular/router';
 
 
@@ -27,11 +27,14 @@ export class LoginComponent {
   onLogin() {
     if (this.isFormValid()) {
       this.authService.login(this.user.email, this.user.password).subscribe(
-        (role) => {
-          if (role === 'user') {
-            this.router.navigate(['/home']);
-          } else if (role === 'admin') {
-            this.router.navigate(['/admin']);
+        (response: LoginResponse | null) => {
+          if (response) {
+            if (response.userType === 'admin') {
+              this.router.navigate(['/admin']);
+            } else {
+              // Tous les utilisateurs peuvent se connecter et accéder à la home
+              this.router.navigate(['/home']);
+            }
           } else {
             this.loginFailed = true;
           }
