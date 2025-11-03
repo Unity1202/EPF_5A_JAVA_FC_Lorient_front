@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #111; /* plus sombre pour un look moderne */
+  background-color: #111;
   padding: 15px 50px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
   position: sticky;
@@ -22,7 +22,7 @@
 .logo-image {
   width: 70px;
   height: auto;
-  border-radius: 6px; /* coins légèrement arrondis */
+  border-radius: 6px;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 
   &:hover {
@@ -31,45 +31,52 @@
   }
 }
 
-.logo {
-  font-family: "Konsole", sans-serif;
-  font-weight: bold;
-  font-size: 2rem;
-  letter-spacing: 1px;
-  color: #ff6600;
-}
-
 .nav-links {
-  list-style: none;
   display: flex;
+  list-style: none;
   gap: 30px;
-  align-items: center;
   margin: 0;
   padding: 0;
+  align-items: center;
+
+  li {
+    display: inline-block;
+  }
+
+  a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    &:hover {
+      background-color: #ff6600;
+      color: white;
+    }
+  }
 }
 
-.nav-links li {
-  display: flex;
-  align-items: center;
-  height: 100%;
-}
-
-.nav-links a {
-  color: white;
-  text-decoration: none;
-  font-family: "Konsole", sans-serif;
-  font-weight: bold;
-  font-size: 1.1rem;
-  padding: 8px 12px;
-  border-radius: 4px;
-  transition: all 0.2s ease-in-out;
-  display: flex;
-  align-items: center;
-  white-space: nowrap;
-
+/* Styles pour le lien Admin */
+.admin-link {
+  background-color: rgba(255, 102, 0, 0.2);
+  border: 2px solid #ff6600;
+  
   &:hover {
-    color: #ff6600;
-    background-color: rgba(255,102,0,0.1);
+    background-color: #ff6600 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 102, 0, 0.4);
+  }
+  
+  mat-icon {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
   }
 }
 
@@ -108,16 +115,13 @@
 }
 
 .logout-btn {
-  color: white;
+  color: #ff6600;
+  width: 32px;
+  height: 32px;
   padding: 0;
-  min-width: auto;
-  width: 24px;
-  height: 24px;
+  min-width: 32px;
   line-height: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
+  
   mat-icon {
     font-size: 18px;
     width: 18px;
@@ -126,28 +130,20 @@
   }
 
   &:hover {
-    color: #ff6600;
     background-color: rgba(255, 102, 0, 0.2);
   }
-}
-
-.login-link {
-  display: flex;
-  align-items: center;
-  height: 100%;
 }
 
 .login-link-text {
   display: flex;
   align-items: center;
   gap: 6px;
+  padding: 8px 16px;
+  border-radius: 6px;
   color: white;
   text-decoration: none;
-  font-family: "Konsole", sans-serif;
-  font-weight: bold;
   font-size: 1.1rem;
-  padding: 8px 12px;
-  border-radius: 4px;
+  font-weight: 600;
   transition: all 0.2s ease-in-out;
   white-space: nowrap;
 
@@ -191,6 +187,11 @@
   }
 
   .login-link-text {
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .admin-link {
     justify-content: center;
     width: 100%;
   }

@@ -11,6 +11,7 @@ import { Subscription } from 'rxjs';
 export class NavbarComponent implements OnInit, OnDestroy {
   isLoggedIn: boolean = false;
   currentUser: LoginResponse | null = null;
+  isAdmin: boolean = false; // Ajout de la propriété isAdmin
   private authSubscription?: Subscription;
 
   constructor(
@@ -35,6 +36,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   updateAuthStatus(): void {
     this.isLoggedIn = this.authService.isLoggedIn();
     this.currentUser = this.authService.getCurrentUser();
+    this.isAdmin = this.authService.isAdmin(); // Ajout de la vérification admin
   }
 
   logout(): void {

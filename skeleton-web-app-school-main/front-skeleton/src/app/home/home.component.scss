@@ -11,7 +11,7 @@ html {
 
 body {
   scroll-snap-type: y mandatory; 
-  overflow-y: auto; /* Changé de scroll à auto */
+  overflow-y: auto;
   height: 100vh;
   font-family: "Konsole", sans-serif;
   
@@ -20,7 +20,6 @@ body {
   background-position: center;
   background-attachment: fixed;
   
-  /* FIX: Empêche le scroll horizontal */
   overflow-x: hidden;
   width: 100%;
 }
@@ -28,25 +27,33 @@ body {
 /* ===== Carousel ===== */
 .carousel {
   position: relative;
-  width: 100%; /* Changé de 100vw à 100% */
+  width: 100%;
   height: 85vh;
   scroll-snap-align: start;
   scroll-snap-stop: always;
-  overflow: hidden; /* Ajouté pour empêcher le débordement */
+  overflow: hidden;
 }
 
 .slides {
   display: flex;
   transition: transform 0.5s ease-in-out;
   height: 100%;
-  width: 100%; /* Ajouté */
+  width: 100%;
+  /* FIX: Empêche les espaces entre les slides */
+  margin: 0;
+  padding: 0;
 }
 
 .slide {
   min-width: 100%;
+  max-width: 100%; /* Ajouté pour forcer la largeur exacte */
+  width: 100%; /* Ajouté pour garantir 100% */
   position: relative;
   height: 100%;
-  flex-shrink: 0; /* Ajouté pour éviter le rétrécissement */
+  flex-shrink: 0;
+  /* FIX: Retire tout padding/margin potentiel */
+  margin: 0;
+  padding: 0;
 }
 
 .slide img {
@@ -54,6 +61,8 @@ body {
   height: 100%;
   object-fit: cover;
   display: block;
+  /* FIX: Empêche les espaces sous l'image */
+  vertical-align: middle;
 }
 
 .caption {
@@ -79,6 +88,62 @@ body {
   margin: 0;
   font-size: 1em;
   line-height: 1.4;
+}
+
+/* Boutons de navigation */
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 15px 20px;
+  font-size: 1.5em;
+  cursor: pointer;
+  z-index: 20;
+  transition: background 0.3s;
+}
+
+.prev:hover, .next:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.prev {
+  left: 20px;
+}
+
+.next {
+  right: 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .carousel {
+    height: 300px; 
+  }
+  
+  .caption {
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    padding: 15px;
+    max-width: none;
+    animation: pop 3s infinite ease-in-out;
+
+    @keyframes pop {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+  }
+  
+  .caption h2 {
+    font-size: 1.3em;
+  }
+  
+  .caption p {
+    font-size: 0.9em;
+  }
 }
 
 /* Boutons de navigation */
