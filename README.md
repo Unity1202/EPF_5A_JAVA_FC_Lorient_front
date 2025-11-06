@@ -21,11 +21,13 @@ Il permet de visualiser le site de football du FC Lorient : informations sur les
 
 ### 1. Installation des dépendances
 ```bash
+cd skeleton-web-app-school-main/front-skeleton
 npm install
 ```
 
 ### 2. Lancement du projet
 ```bash
+cd skeleton-web-app-school-main/front-skeleton
 npm start
 ```
 
@@ -46,31 +48,28 @@ http://localhost:4200/
 - **grille d'actualités** avec pagination pour les derniers articles
 - **footer complet** avec liens utiles et réseaux sociaux
 
-#### ⚽ Équipe (`/equipe`)
-- **grille des joueurs** avec photos, noms, postes et numéros
-- **affichage visuel** des informations de l'effectif
-
 #### 📅 Matchs (`/matchs`)
 - **prochain match** avec détails complets (date, équipes, lieu)
 - **matchs à venir** avec grille d'affichage
 - **matchs précédents** avec scores et résultats
-- **boutons de réservation** pour la billeterie
+- **boutons de réservation** qui redirige vers le site officiel de la billeterie
+
+#### ⚽ Équipe (`/equipe`)
+- **grille des joueurs** avec photos, noms, postes et numéros
+- **affichage visuel** des informations de l'effectif
+
+#### 🚹​ Joueur (`/joueurs/:id`)
+- **informations du joueur** avec photos, noms, postes et numéros
+- **biographie du joueur** avec les informations officielles de Wikipedia
 
 #### 🛒 Boutique (`/boutique`)
 - **grille de produits** avec images, descriptions et prix
-- **boutons d'ajout au panier** pour chaque produit
-
-#### 💬 Forum (`/forum`)
-- **affichage des messages** existants avec auteur et date
-- **formulaire d'ajout** de nouveaux messages
-- **interface utilisateur** intuitive avec validation des champs
-- **intégration backend** pour la persistance des données
+- **boutons de commande** qui redirige vers le site officiel de la boutique
 
 #### ℹ️ À propos (`/infos`)
 - **présentation du club** avec historique et informations clés
-- **données du fc lorient** : fondation, stade, couleurs
+- **film de présentation** de la saison 2024-2025
 - **liens vers les réseaux sociaux** et site officiel
-- **section informations pratiques** sur le club
 
 #### 🔐 Authentification
 - **page de connexion** (`/login`) avec validation des champs
@@ -78,6 +77,11 @@ http://localhost:4200/
 - **2 types de compte** (admin et utilisateur)
 - identifiant admin : admin@football.fr
 - mot de passe admin : admin123
+
+#### 💬 Forum (`/forum`)
+- **affichage des messages** existants avec auteur et date
+- **formulaire d'ajout** de nouveaux messages
+- **intégration backend** pour la persistance des données
 
 #### 👮​ Admin (`/admin`)
 - **panel admin** complet avec interface claire et intuitive
